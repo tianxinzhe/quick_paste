@@ -41,7 +41,7 @@ function fillInput(text: string): boolean {
 
 const LANG_DATA: Record<string, Record<string, string>> = {
   'zh_CN': {
-    'contextMenuSaveFull': '📥 收藏到 QuickFill',
+    'contextMenuSaveFull': '📥 收藏到 Quick Paste',
     'pickerPreview': '预览：',
     'selectCategories': '选择分类（可多选）：',
     'btnCancel': '取消',
@@ -49,7 +49,7 @@ const LANG_DATA: Record<string, Record<string, string>> = {
     'categoryNone': '无分类'
   },
   'en': {
-    'contextMenuSaveFull': '📥 Save to QuickFill',
+    'contextMenuSaveFull': '📥 Save to Quick Paste',
     'pickerPreview': 'Preview:',
     'selectCategories': 'Select categories (multiple):',
     'btnCancel': 'Cancel',
@@ -57,7 +57,7 @@ const LANG_DATA: Record<string, Record<string, string>> = {
     'categoryNone': 'None'
   },
   'ja': {
-    'contextMenuSaveFull': '📥 QuickFillに保存',
+    'contextMenuSaveFull': '📥 QuickPasteに保存',
     'pickerPreview': 'プレビュー：',
     'selectCategories': '分類を選択（複数可）：',
     'btnCancel': 'キャンセル',
@@ -65,7 +65,7 @@ const LANG_DATA: Record<string, Record<string, string>> = {
     'categoryNone': '分類なし'
   },
   'ko': {
-    'contextMenuSaveFull': '📥 QuickFill에 저장',
+    'contextMenuSaveFull': '📥 QuickPaste에 저장',
     'pickerPreview': '미리보기：',
     'selectCategories': '분류 선택 (여러 개 가능)：',
     'btnCancel': '취소',
@@ -77,8 +77,8 @@ const LANG_DATA: Record<string, Record<string, string>> = {
 let currentLang: string | null = null;
 
 function loadLanguage(callback: () => void): void {
-  chrome.storage.local.get('quickfill_language', (result) => {
-    const storedLang = result.quickfill_language;
+  chrome.storage.local.get('quickpaste_language', (result) => {
+    const storedLang = result.quickpaste_language;
     currentLang = storedLang ? String(storedLang) : chrome.i18n.getMessage('@@ui_locale') || 'zh_CN';
     callback();
   });
@@ -147,7 +147,7 @@ function showCategoryPicker(text: string): void {
     chrome.storage.local.get('categories', (result) => {
       const categories = (result.categories as { id: string; name: string; color: string }[]) || [];
       const optionsContainer = picker.querySelector('#category-options') as HTMLElement;
-      
+
       let html = `<div class="category-option" data-id="" style="padding: 6px 12px; border: 1px solid #ddd; border-radius: 20px; cursor: pointer; font-size: 13px;">${getI18n('categoryNone')}</div>`;
       categories.forEach(cat => {
         html += `<div class="category-option" data-id="${cat.id}" data-color="${cat.color}" style="padding: 6px 12px; border: 1px solid ${cat.color}; border-radius: 20px; cursor: pointer; font-size: 13px; color: ${cat.color};">${cat.name}</div>`;
@@ -160,7 +160,7 @@ function showCategoryPicker(text: string): void {
         el.addEventListener('click', () => {
           const id = element.dataset.id || '';
           const index = selectedLabels.indexOf(id);
-          
+
           if (index === -1) {
             selectedLabels.push(id);
             element.style.background = '#667eea';

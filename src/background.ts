@@ -16,44 +16,43 @@ interface Category {
 }
 
 const LANG_DATA: Record<string, Record<string, string>> = {
-  'zh_CN': { contextMenuSave: '📥 收藏到 QuickFill' },
-  'en': { contextMenuSave: '📥 Save to QuickFill' },
-  'ja': { contextMenuSave: '📥 QuickFillに保存' },
-  'ko': { contextMenuSave: '📥 QuickFill에 저장' }
+  'zh_CN': { contextMenuSave: '📥 收藏到 Quick Paste' },
+  'en': { contextMenuSave: '📥 Save to Quick Paste' },
+  'ja': { contextMenuSave: '📥 Quick Pasteに保存' },
+  'ko': { contextMenuSave: '📥 Quick Paste에 저장' }
 };
 
 initializePlayaYield({
-  //apiKey: 'pk_test_4b77f8f8c7674f4abe63b9637ab41192',
-  apiKey: 'pk_live_8370658c75f74e76977c067c6103727a',
+  apiKey: 'pk_live_76816d32bfa742eba9d5a989823a7402',
   debug: false
 });
 
 chrome.alarms.create('keepAlive', { periodInMinutes: 0.5 });
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === 'keepAlive') {
-    console.log('[QuickFill] keepAlive');
+    console.log('[QuickPaste] keepAlive');
   }
 });
 
 function getContextMenuTitle(callback: (title: string) => void): void {
-  chrome.storage.local.get('quickfill_language', (result) => {
-    const storedLang = result.quickfill_language;
+  chrome.storage.local.get('quickpaste_language', (result) => {
+    const storedLang = result.quickpaste_language;
     const lang = storedLang ? String(storedLang) : chrome.i18n.getMessage('@@ui_locale') || 'zh_CN';
-    const title = LANG_DATA[lang]?.contextMenuSave || '📥 收藏到 QuickFill';
+    const title = LANG_DATA[lang]?.contextMenuSave || '📥 收藏到 Quick Paste';
     callback(title);
   });
 }
 
 function updateContextMenu(): void {
   getContextMenuTitle((title) => {
-    chrome.contextMenus.update('quickfill-save', { title });
+    chrome.contextMenus.update('quickpaste-save', { title });
   });
 }
 
 chrome.runtime.onInstalled.addListener(() => {
   getContextMenuTitle((title) => {
     chrome.contextMenus.create({
-      id: "quickfill-save",
+      id: "quickpaste-save",
       title: title,
       contexts: ["selection"]
     });
@@ -70,7 +69,7 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.storage.onChanged.addListener((changes, namespace) => {
-  if (namespace === 'local' && changes.quickfill_language) {
+  if (namespace === 'local' && changes.quickpaste_language) {
     updateContextMenu();
   }
 });
@@ -106,7 +105,7 @@ chrome.action.onClicked.addListener(() => {
 
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   if (!tab) return;
-  if (info.menuItemId === "quickfill-save" && info.selectionText && tab.id) {
+  if (info.menuItemId === "quickpaste-save" && info.selectionText && tab.id) {
     const tabId = tab.id;
     chrome.tabs.sendMessage(tabId, { action: 'showCategoryPicker', text: info.selectionText }, (response) => {
       if (chrome.runtime.lastError) {

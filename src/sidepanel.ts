@@ -567,7 +567,7 @@ async function exportData(): Promise<void> {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `quickfill-backup-${Date.now()}.json`;
+  a.download = `quickpaste-backup-${Date.now()}.json`;
   a.click();
   URL.revokeObjectURL(url);
 }
@@ -738,7 +738,7 @@ async function loadAd(): Promise<void> {
     });
     adContainer.style.display = 'block';
   } catch (err) {
-    console.error('[QuickFill] PlayaYield SDK 加载失败:', (err as Error).message);
+    console.error('[QuickPaste] PlayaYield SDK 加载失败:', (err as Error).message);
     adContainer.innerHTML = `
       <div style="padding: 8px 12px; display: flex; align-items: center; justify-content: center; gap: 8px;">
         <span style="color: #666; font-size: 12px;">📢</span>
@@ -802,14 +802,14 @@ function openHelp(): void {
 
 async function checkFirstUse(): Promise<void> {
   const firstUse = await new Promise((resolve) => {
-    chrome.storage.local.get('quickfill_first_use', (result) => {
-      resolve(result['quickfill_first_use'] !== false);
+    chrome.storage.local.get('quickpaste_first_use', (result) => {
+      resolve(result['quickpaste_first_use'] !== false);
     });
   });
 
   if (cards.length > 0) {
     await new Promise<void>((resolve) => {
-      chrome.storage.local.set({ 'quickfill_first_use': false }, () => resolve());
+      chrome.storage.local.set({ 'quickpaste_first_use': false }, () => resolve());
     });
     return;
   }
@@ -817,19 +817,19 @@ async function checkFirstUse(): Promise<void> {
   if (firstUse && cards.length === 0) {
     const overlay = document.getElementById('onboarding-overlay');
     if (!overlay) return;
-    
+
     overlay.style.display = 'flex';
-    
+
     const startBtn = document.getElementById('onboarding-start');
     const helpBtn = document.getElementById('onboarding-help');
-    
+
     const dismiss = async () => {
       overlay.style.display = 'none';
       await new Promise<void>((resolve) => {
-        chrome.storage.local.set({ 'quickfill_first_use': false }, () => resolve());
+        chrome.storage.local.set({ 'quickpaste_first_use': false }, () => resolve());
       });
     };
-    
+
     startBtn?.addEventListener('click', dismiss);
     helpBtn?.addEventListener('click', () => {
       openHelp();

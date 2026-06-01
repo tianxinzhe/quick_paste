@@ -1,12 +1,12 @@
-# QuickFill
+# QuickPaste
 
-一款简洁高效的文本快速填充浏览器扩展，帮助你快速插入常用文本片段。
+一款简洁高效的文本快速粘贴浏览器扩展，帮助你快速插入常用文本片段。
 
-A simple and efficient browser extension for quick text filling, helping you insert frequently used text snippets.
+A simple and efficient browser extension for quick text pasting, helping you insert frequently used text snippets.
 
 ## 功能特性 / Features
 
-- ✨ **快速填充** - 一键将预设文本填充到输入框
+- ✨ **快速粘贴** - 一键将预设文本粘贴到输入框
 - 📋 **右键收藏** - 通过右键菜单快速收藏选中的文本
 - 🏷️ **分类管理** - 支持文本卡片分类管理
 - 🔄 **数据导入导出** - 支持 JSON 格式的数据备份和恢复
@@ -40,7 +40,7 @@ A simple and efficient browser extension for quick text filling, helping you ins
 | 快捷键 / Shortcut | 功能 / Action |
 |---|---|
 | `Ctrl+Shift+F` | 打开/关闭侧边面板 |
-| `Alt+Shift+F` | 填充上次使用的文本 |
+| `Alt+Shift+F` | 粘贴上次使用的内容 |
 | `Alt+Shift+S` | 保存选中的文本 |
 
 ## 安装说明 / Installation
@@ -60,9 +60,9 @@ A simple and efficient browser extension for quick text filling, helping you ins
 
 ## 隐私政策 / Privacy Policy
 
-QuickFill 不收集任何用户数据，所有数据均存储在用户本地浏览器中。详情请参阅 [PRIVACY.md](./PRIVACY.md)。
+QuickPaste 不收集任何用户数据，所有数据均存储在用户本地浏览器中。详情请参阅 [PRIVACY.md](./PRIVACY.md)。
 
-QuickFill does not collect any user data. All data is stored locally in the user's browser. See [PRIVACY.md](./PRIVACY.md) for details.
+QuickPaste does not collect any user data. All data is stored locally in the user's browser. See [PRIVACY.md](./PRIVACY.md) for details.
 
 ## 许可证 / License
 

@@ -1,7 +1,7 @@
 {
-  "name": "quikfill",
+  "name": "quickpaste",
   "version": "1.0.0",
-  "description": "绝对隐私、纯本地运行、可视化卡片操作的 Chrome 侧边栏快捷文本填充工具",
+  "description": "绝对隐私、纯本地运行、可视化卡片操作的 Chrome 侧边栏快捷文本粘贴工具",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/tianxinzhe/quikfill.git"
+    "url": "https://gitee.com/tianxinzhe/quickpaste.git"
   },
   "keywords": [
     "chrome-extension",
-    "quickfill",
-    "text-fill"
+    "quickpaste",
+    "text-paste"
   ],
   "author": "",
   "license": "ISC",

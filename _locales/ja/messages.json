@@ -1,10 +1,10 @@
 {
-  "extensionName": { "message": "クイックフィルアシスタント" },
-  "extensionDescription": { "message": "✨ ワンクリックでテキストを素早く入力！カード管理、カテゴリ、データバックアップに対応、プライバシー保護のローカルストレージ" },
-  "cmdToggleDescription": { "message": "QuickFillサイドバーで開く/閉じる" },
-  "cmdFillDescription": { "message": "前回の内容で現在の入力欄を入力" },
+  "extensionName": { "message": "クイックペーストアシスタント" },
+  "extensionDescription": { "message": "ワンクリックでテキストを素早く貼り付け！カード管理、カテゴリ、データバックアップに対応、プライバシー保護のローカルストレージ" },
+  "cmdToggleDescription": { "message": "QuickPasteサイドバーで開く/閉じる" },
+  "cmdFillDescription": { "message": "前回の内容で現在の入力欄貼り付け" },
   "cmdSaveSelectionDescription": { "message": "選択テキストをカードとして保存" },
-  "actionDefaultTitle": { "message": "QuickFill" },
+  "actionDefaultTitle": { "message": "QuickPaste" },
 
   "btnAddCard": { "message": "カード追加" },
   "btnExport": { "message": "エクスポート" },
@@ -22,19 +22,19 @@
   "emptyStateAddFirst": { "message": "最初のカードを追加" },
   "emptyStateLearnMore": { "message": "使い方をもっと見る" },
 
-  "onboardingTitle": { "message": "QuickFillへようこそ" },
+  "onboardingTitle": { "message": "QuickPasteへようこそ" },
   "onboardingSubtitle": { "message": "繰り返し入力をシンプルに" },
   "onboardingStep1Title": { "message": "右クリックで保存" },
-  "onboardingStep1Desc": { "message": "Webページのテキストを選択し、右クリックで「QuickFillに保存」を選択" },
-  "onboardingStep2Title": { "message": "クリックで入力" },
-  "onboardingStep2Desc": { "message": "サイドバーを開き、カードをクリックして入力欄に自動入力" },
+  "onboardingStep1Desc": { "message": "Webページのテキストを選択し、右クリックで「QuickPasteに保存」を選択" },
+  "onboardingStep2Title": { "message": "クリックで貼り付け" },
+  "onboardingStep2Desc": { "message": "サイドバーを開き、カードをクリックして入力欄に自動貼り付け" },
   "onboardingStep3Title": { "message": "分類で整理" },
   "onboardingStep3Desc": { "message": "分類を作成してテキストを整理、検索や一括操作に対応" },
   "onboardingStart": { "message": "始める" },
   "onboardingViewHelp": { "message": "ヘルプを見る" },
 
   "toastClipboardSuccess": { "message": "クリップボードにコピー、Ctrl+Vで貼り付け" },
-  "toastFillSuccess": { "message": "入力完了" },
+  "toastFillSuccess": { "message": "貼り付け完了" },
 
   "promptCategoryName": { "message": "分類名を入力（最大10文字）：" },
   "alertCategoryNameTooLong": { "message": "分類名は10文字以内にしてください" },
@@ -60,10 +60,10 @@
   "alertImportSuccess": { "message": "インポート成功" },
   "alertImportFailed": { "message": "ファイル解析失敗" },
 
-  "contextMenuSave": { "message": "📥 QuickFillに保存" },
-  "contextMenuSaveFull": { "message": "📥 QuickFillに保存" },
+  "contextMenuSave": { "message": "📥 QuickPasteに保存" },
+  "contextMenuSaveFull": { "message": "📥 QuickPasteに保存" },
 
   "pickerPreview": { "message": "プレビュー：" },
 
-  "adSupportLabel": { "message": "QuickFillをサポート → もっと機能解放" }
+  "adSupportLabel": { "message": "QuickPasteをサポート → もっと機能解放" }
 }

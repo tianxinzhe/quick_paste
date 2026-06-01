@@ -1,10 +1,10 @@
 {
-  "extensionName": { "message": "QuickFill Assistant" },
-  "extensionDescription": { "message": "✨ One-click quick text filling! Support card management, categories, data backup, privacy-first local storage" },
-  "cmdToggleDescription": { "message": "Open/Close QuickFill sidebar" },
-  "cmdFillDescription": { "message": "Fill current input with last filled content" },
+  "extensionName": { "message": "QuickPaste Assistant" },
+  "extensionDescription": { "message": "One-click quick text pasting! Support card management, categories, data backup, privacy-first local storage" },
+  "cmdToggleDescription": { "message": "Open/Close QuickPaste sidebar" },
+  "cmdFillDescription": { "message": "Paste current input with last pasted content" },
   "cmdSaveSelectionDescription": { "message": "Save selected text as card" },
-  "actionDefaultTitle": { "message": "QuickFill" },
+  "actionDefaultTitle": { "message": "QuickPaste" },
 
   "btnAddCard": { "message": "Add Card" },
   "btnExport": { "message": "Export" },
@@ -22,19 +22,19 @@
   "emptyStateAddFirst": { "message": "Add your first text" },
   "emptyStateLearnMore": { "message": "Learn more tips" },
 
-  "onboardingTitle": { "message": "Welcome to QuickFill" },
+  "onboardingTitle": { "message": "Welcome to QuickPaste" },
   "onboardingSubtitle": { "message": "Make repetitive typing simple" },
   "onboardingStep1Title": { "message": "Right-click to save" },
-  "onboardingStep1Desc": { "message": "Select text on any webpage, right-click and choose \"Save to QuickFill\"" },
-  "onboardingStep2Title": { "message": "Click to fill" },
-  "onboardingStep2Desc": { "message": "Open the sidebar, click any card to fill it into an input field" },
+  "onboardingStep1Desc": { "message": "Select text on any webpage, right-click and choose \"Save to QuickPaste\"" },
+  "onboardingStep2Title": { "message": "Click to paste" },
+  "onboardingStep2Desc": { "message": "Open the sidebar, click any card to paste it into an input field" },
   "onboardingStep3Title": { "message": "Organize with categories" },
   "onboardingStep3Desc": { "message": "Create categories to organize texts, with search and batch operations" },
   "onboardingStart": { "message": "Get Started" },
   "onboardingViewHelp": { "message": "View Help" },
 
   "toastClipboardSuccess": { "message": "Copied to clipboard, Ctrl+V to paste" },
-  "toastFillSuccess": { "message": "Filled successfully" },
+  "toastFillSuccess": { "message": "Pasted successfully" },
 
   "promptCategoryName": { "message": "Enter category name (max 10 chars):" },
   "alertCategoryNameTooLong": { "message": "Category name cannot exceed 10 characters" },
@@ -60,10 +60,10 @@
   "alertImportSuccess": { "message": "Import successful" },
   "alertImportFailed": { "message": "File parsing failed" },
 
-  "contextMenuSave": { "message": "📥 Save to QuickFill" },
-  "contextMenuSaveFull": { "message": "📥 Save to QuickFill" },
+  "contextMenuSave": { "message": "📥 Save to QuickPaste" },
+  "contextMenuSaveFull": { "message": "📥 Save to QuickPaste" },
 
   "pickerPreview": { "message": "Preview:" },
 
-  "adSupportLabel": { "message": "Support QuickFill → Unlock more features" }
+  "adSupportLabel": { "message": "Support QuickPaste → Unlock more features" }
 }

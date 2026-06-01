@@ -1,10 +1,10 @@
 {
-  "extensionName": { "message": "퀵필 어시스턴트" },
-  "extensionDescription": { "message": "✨ 한 번 클릭으로 텍스트 빠르게 입력! 카드 관리, 카테고리, 데이터 백업 지원, 개인정보 보호 로컬 스토리지" },
-  "cmdToggleDescription": { "message": "QuickFill 사이드바 열기/닫기" },
+  "extensionName": { "message": "퀵페스트 어시스턴트" },
+  "extensionDescription": { "message": "한 번 클릭으로 텍스트 빠르게 붙여넣기! 카드 관리, 카테고리, 데이터 백업 지원, 개인정보 보호 로컬 스토리지" },
+  "cmdToggleDescription": { "message": "QuickPaste 사이드바 열기/닫기" },
   "cmdFillDescription": { "message": "이전 입력 내용으로 현재 입력란 채우기" },
   "cmdSaveSelectionDescription": { "message": "선택한 텍스트를 카드로 저장" },
-  "actionDefaultTitle": { "message": "QuickFill" },
+  "actionDefaultTitle": { "message": "QuickPaste" },
 
   "btnAddCard": { "message": "카드 추가" },
   "btnExport": { "message": "내보내기" },
@@ -22,19 +22,19 @@
   "emptyStateAddFirst": { "message": "첫 번째 카드 추가" },
   "emptyStateLearnMore": { "message": "자세히 알아보기" },
 
-  "onboardingTitle": { "message": "QuickFill에 오신 것을 환영합니다" },
+  "onboardingTitle": { "message": "QuickPaste에 오신 것을 환영합니다" },
   "onboardingSubtitle": { "message": "반복적인 입력을 간단하게" },
   "onboardingStep1Title": { "message": "우클릭으로 저장" },
-  "onboardingStep1Desc": { "message": "웹페이지에서 텍스트를 선택하고 우클릭하여 \"QuickFill에 저장\" 선택" },
-  "onboardingStep2Title": { "message": "클릭으로 입력" },
-  "onboardingStep2Desc": { "message": "사이드바를 열고 카드를 클릭하여 입력란에 자동 입력" },
+  "onboardingStep1Desc": { "message": "웹페이지에서 텍스트를 선택하고 우클릭하여 \"QuickPaste에 저장\" 선택" },
+  "onboardingStep2Title": { "message": "클릭으로 붙여넣기" },
+  "onboardingStep2Desc": { "message": "사이드바를 열고 카드를 클릭하여 입력란에 자동 붙여넣기" },
   "onboardingStep3Title": { "message": "분류로 정리" },
   "onboardingStep3Desc": { "message": "분류를 만들어 텍스트를 정리, 검색 및 일괄 작업 지원" },
   "onboardingStart": { "message": "시작하기" },
   "onboardingViewHelp": { "message": "도움말 보기" },
 
   "toastClipboardSuccess": { "message": "클립보드에 복사됨, Ctrl+V로 붙여넣기" },
-  "toastFillSuccess": { "message": "입력 완료" },
+  "toastFillSuccess": { "message": "붙여넣기 완료" },
 
   "promptCategoryName": { "message": "분류 이름 입력 (최대 10자)：" },
   "alertCategoryNameTooLong": { "message": "분류 이름은 10자를 초과할 수 없습니다" },
@@ -60,10 +60,10 @@
   "alertImportSuccess": { "message": "가져오기 성공" },
   "alertImportFailed": { "message": "파일 파싱 실패" },
 
-  "contextMenuSave": { "message": "📥 QuickFill에 저장" },
-  "contextMenuSaveFull": { "message": "📥 QuickFill에 저장" },
+  "contextMenuSave": { "message": "📥 QuickPaste에 저장" },
+  "contextMenuSaveFull": { "message": "📥 QuickPaste에 저장" },
 
   "pickerPreview": { "message": "미리보기：" },
 
-  "adSupportLabel": { "message": "QuickFill 지원 → 더 많은 기능 잠금 해제" }
+  "adSupportLabel": { "message": "QuickPaste 지원 → 더 많은 기능 잠금 해제" }
 }
