@@ -5,6 +5,11 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build:google": "cross-env PLAYA_API_KEY_GOOGLE=pk_live_8370658c75f74e76977c067c6103727a webpack --env platform=google",
+    "build:edge": "cross-env PLAYA_API_KEY_EDGE=pk_live_76816d32bfa742eba9d5a989823a7402 webpack --env platform=edge",
+    "build": "webpack",
+    "pack:google": "npm run build:google && node scripts/pack.cjs google",
+    "pack:edge": "npm run build:edge && node scripts/pack.cjs edge",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +29,9 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.1.42",
+    "@types/node": "^25.9.1",
+    "archiver": "^8.0.0",
+    "cross-env": "^10.1.0",
     "ts-loader": "^9.5.7",
     "typescript": "^6.0.3",
     "webpack": "^5.107.2",

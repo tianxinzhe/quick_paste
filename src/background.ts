@@ -23,7 +23,7 @@ const LANG_DATA: Record<string, Record<string, string>> = {
 };
 
 initializePlayaYield({
-  apiKey: 'pk_live_76816d32bfa742eba9d5a989823a7402',
+  apiKey: process.env.PLAYA_API_KEY || 'pk_live_8370658c75f74e76977c067c6103727a',
   debug: false
 });
 
@@ -76,7 +76,11 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
 
 chrome.commands.onCommand.addListener((command) => {
   if (command === 'toggle-sidepanel') {
-    chrome.sidePanel.open({ windowId: chrome.windows.WINDOW_ID_CURRENT });
+    chrome.windows.getCurrent((window) => {
+      if (window?.id) {
+        chrome.sidePanel.open({ windowId: window.id });
+      }
+    });
   } else if (command === 'fill-last-input') {
     chrome.storage.session.get('lastFilledText', (result) => {
       if (result.lastFilledText) {
@@ -100,7 +104,11 @@ chrome.commands.onCommand.addListener((command) => {
 });
 
 chrome.action.onClicked.addListener(() => {
-  chrome.sidePanel.open({ windowId: chrome.windows.WINDOW_ID_CURRENT });
+  chrome.windows.getCurrent((window) => {
+    if (window?.id) {
+      chrome.sidePanel.open({ windowId: window.id });
+    }
+  });
 });
 
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {

@@ -15,11 +15,11 @@
     <nav class="help-nav">
       <a href="#getting-started">快速开始</a>
       <a href="#core-features">核心功能</a>
+      <a href="#import-export" class="highlight">🔄 导入导出</a>
       <a href="#shortcuts">快捷键</a>
       <a href="#categories">分类管理</a>
       <a href="#variables">变量说明</a>
       <a href="#batch-operations">批量操作</a>
-      <a href="#import-templates">导入模板</a>
       <a href="#privacy">隐私说明</a>
     </nav>
 
@@ -242,65 +242,106 @@
       </div>
     </section>
 
-    <section id="import-templates">
-      <h2>📥 导入模板 / Import Templates</h2>
+    <section id="import-export">
+      <h2>� 导入导出 / Import & Export <span class="fission-badge">🔥 裂变分享</span></h2>
       
-      <p class="intro">点击下载按钮下载模板文件，然后在插件中导入使用<br>
-      Click download buttons to get template files, then import in the extension</p>
+      <div class="hero-section">
+        <div class="hero-icon">💫</div>
+        <h3>分享你的内容，让更多人受益！</h3>
+        <p class="hero-desc">导入导出功能是 <strong>裂变传播的最佳方式</strong>！你可以：</p>
+        <ul class="hero-list">
+          <li>📤 将自己精心整理的文本卡片导出分享给朋友</li>
+          <li>📥 导入他人分享的优质模板，快速获得价值</li>
+          <li>🔄 在多台设备间同步数据</li>
+          <li>📁 定期备份数据，防止丢失</li>
+        </ul>
+      </div>
 
-      <div class="template-section">
-        <h3>🤖 AI提示词模板 / AI Prompts</h3>
-        <div class="template-list">
-          <div class="template-card">
-            <div class="template-icon">🌐</div>
-            <div class="template-info">
-              <h4>中文AI提示词 / Chinese AI Prompts</h4>
-              <p>小红书/抖音/视频号/公众号全套自媒体创作提示词</p>
-            </div>
-            <a href="demo-data/ai-prompts-zh.json" download class="download-btn">下载 / Download</a>
+      <div class="feature-grid">
+        <div class="feature-card highlight-card">
+          <div class="feature-icon">📤</div>
+          <h3>导出数据 / Export</h3>
+          <p>一键导出所有文本卡片和分类为JSON文件，轻松分享给他人<br>Export all texts and categories as JSON, share with friends easily</p>
+          <div class="feature-steps">
+            <ol>
+              <li>打开侧边栏设置菜单 | Open sidebar settings</li>
+              <li>点击「导出数据」| Click "Export Data"</li>
+              <li>文件自动下载到本地 | File downloads automatically</li>
+            </ol>
           </div>
-          <div class="template-card">
-            <div class="template-icon">🇬🇧</div>
-            <div class="template-info">
-              <h4>英文AI提示词 / English AI Prompts</h4>
-              <p>Xiaohongshu/Douyin/WeChat full-stack content creation prompts</p>
-            </div>
-            <a href="demo-data/ai-prompts-en.json" download class="download-btn">下载 / Download</a>
+        </div>
+
+        <div class="feature-card highlight-card">
+          <div class="feature-icon">📥</div>
+          <h3>导入数据 / Import</h3>
+          <p>导入他人分享的JSON文件，快速获取优质内容模板<br>Import shared JSON files to get quality templates quickly</p>
+          <div class="feature-steps">
+            <ol>
+              <li>打开侧边栏设置菜单 | Open sidebar settings</li>
+              <li>点击「导入数据」| Click "Import Data"</li>
+              <li>选择JSON文件，选择「合并」或「覆盖」| Select file, choose merge/overwrite</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="share-section">
+        <h3>📣 如何分享你的内容？ / How to Share?</h3>
+        <div class="share-tips">
+          <div class="share-step">
+            <span class="step-badge">1️⃣</span>
+            <p><strong>整理你的卡片</strong> - 将常用的文本、提示词、模板整理好</p>
+          </div>
+          <div class="share-step">
+            <span class="step-badge">2️⃣</span>
+            <p><strong>导出为JSON</strong> - 使用导出功能生成分享文件</p>
+          </div>
+          <div class="share-step">
+            <span class="step-badge">3️⃣</span>
+            <p><strong>分享给朋友</strong> - 通过微信、QQ、邮件等发送JSON文件</p>
+          </div>
+          <div class="share-step">
+            <span class="step-badge">4️⃣</span>
+            <p><strong>朋友导入使用</strong> - 他们导入即可获得你的精选内容</p>
           </div>
         </div>
       </div>
 
       <div class="template-section">
-        <h3>🧪 测试人员模板 / Tester Templates</h3>
+        <h3>🎁 官方模板 / Official Templates</h3>
+        <p class="intro">我们准备了精选模板供你免费使用！</p>
+        
         <div class="template-list">
-          <div class="template-card">
-            <div class="template-icon">🧪</div>
+          <div class="template-card featured">
+            <div class="template-icon">�</div>
             <div class="template-info">
-              <h4>中文测试模板 / Chinese Tester Templates</h4>
-              <p>测试账号、API请求、Bug报告、SQL查询、压测数据等</p>
+              <h4>🔥 AI提示词模板 / AI Prompts</h4>
+              <p>小红书/抖音/视频号/公众号全套自媒体创作提示词 | Complete content creation prompts</p>
             </div>
-            <a href="demo-data/tester-zh.json" download class="download-btn">下载 / Download</a>
+            <a href="demo-data/ai-prompts-zh.json" download class="download-btn">中文 / Chinese</a>
+            <a href="demo-data/ai-prompts-en.json" download class="download-btn">English</a>
           </div>
+          
           <div class="template-card">
             <div class="template-icon">🧪</div>
             <div class="template-info">
-              <h4>英文测试模板 / English Tester Templates</h4>
-              <p>Test accounts, API requests, bug reports, SQL queries, load test data</p>
+              <h4>🧪 测试人员模板 / Tester Templates</h4>
+              <p>测试账号、API请求、Bug报告、SQL查询、压测数据等 | Test accounts, API requests, bug reports</p>
             </div>
-            <a href="demo-data/tester-en.json" download class="download-btn">下载 / Download</a>
+            <a href="demo-data/tester-zh.json" download class="download-btn">中文 / Chinese</a>
+            <a href="demo-data/tester-en.json" download class="download-btn">English</a>
           </div>
         </div>
       </div>
 
-      <div class="usage-tips">
-        <h3>📝 使用方法 / How to Use</h3>
-        <ol>
-          <li>点击下载按钮保存JSON文件到本地 | Click download to save JSON file</li>
-          <li>打开QuickPaste侧边栏 | Open QuickPaste sidebar</li>
-          <li>点击「导入」按钮 | Click "Import" button</li>
-          <li>选择下载的JSON文件 | Select the downloaded JSON file</li>
-          <li>选择「覆盖」或「合并」导入方式 | Choose "Overwrite" or "Merge"</li>
-        </ol>
+      <div class="tip-box important">
+        <h3>� 分享小贴士 / Sharing Tips</h3>
+        <ul>
+          <li>🎯 <strong>主题化分享</strong> - 比如「小红书爆款文案合集」「程序员常用代码片段」</li>
+          <li>📝 <strong>添加说明</strong> - 在卡片中添加使用说明，方便他人理解</li>
+          <li>🔄 <strong>持续更新</strong> - 定期更新你的模板并重新分享</li>
+          <li>🏷️ <strong>善用分类</strong> - 使用分类功能让内容更有条理</li>
+        </ul>
       </div>
     </section>
 

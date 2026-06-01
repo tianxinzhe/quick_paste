@@ -309,3 +309,157 @@ section h3 {
     grid-template-columns: 1fr;
   }
 }
+
+/* 导入导出高亮样式 */
+.help-nav a.highlight {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(238, 90, 36, 0.3);
+}
+
+.help-nav a.highlight:hover {
+  background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
+  transform: translateY(-1px);
+}
+
+.fission-badge {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-left: 10px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(238, 90, 36, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(238, 90, 36, 0);
+  }
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  color: white;
+  margin-bottom: 25px;
+}
+
+.hero-icon {
+  font-size: 64px;
+  margin-bottom: 15px;
+}
+
+.hero-section h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.hero-desc {
+  font-size: 15px;
+  opacity: 0.95;
+  margin-bottom: 15px;
+}
+
+.hero-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.hero-list li {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.feature-card.highlight-card {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2px solid #fbbf24;
+}
+
+.feature-steps {
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.feature-steps ol {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+  color: #666;
+}
+
+.feature-steps li {
+  margin-bottom: 5px;
+}
+
+.share-section {
+  margin: 25px 0;
+}
+
+.share-tips {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.share-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px dashed #e2e8f0;
+}
+
+.share-step:last-child {
+  border-bottom: none;
+}
+
+.step-badge {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.share-step p {
+  margin: 0;
+  font-size: 14px;
+  color: #475569;
+}
+
+.template-card.featured {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2px solid #fbbf24;
+}
+
+.template-card.featured .download-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.tip-box.important {
+  background: #fffbeb;
+  border-left-color: #f59e0b;
+}
+
+.tip-box.important h3 {
+  color: #d97706;
+}
+
+.tip-box.important li {
+  padding: 8px 0;
+}
