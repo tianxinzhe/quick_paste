@@ -1,14 +1,11 @@
 {
   "manifest_version": 3,
-//   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxowm3/Pt/erBvbAA5VN2YkvEgcqWTXGUqCd7K+nucNORrYRSbNvJwRGtdJ8NrxH56dUZhnzgLR7NTiyYuwcaYSOy92eQWlp/rwUQoZPG8p2KITFFZft6yyZcQ6jEen0c9QAjHGqy2g3n+slqobIPmvvA6CdgJVTacMb1vvamyxd8c2eopQkCgHGCeaQ22mKah5+HjE86F/WKrGUNw+nKYclvqhB7BfNqEDYfutH7SBRhoIqBuTZhuZRipT9FHcRZe2vH4dvVmBwdPNSvz6YP5UvBdTQCbjZ6sH3V0kkkEE5QcOQwvs8beXmPsk785xIx40VMJVX9opAluXdUIG3ZtwIDAQAB",
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjyQQHOeuJI5iMQpAVnVixLTk3g4nz8HzSLIVbYv1J/2hTAvsJuXxnMdabcgYi6o8csA9nfmrpXz+1q3K/3PQh6gNe/nb5mc2abaC9/K+9fov7hAqea1rPNteIGQusN4v4ggiRw95UYSoV1b26aNNJVE+/Cj2G05FTyFNQw51PWAnwozQuPQL7FqsTea0DTzq52KOQCRbaEFGAa028PThh9ytKo8OH4d3mK+m0v4E/5dUGhZz2lBroBTFy39kbfGGBGsZEQjYCQkdXzkWmWBNDw2Y5CIG2R295lFgqZwxM3Iyq9Th+kCSuo4qP4z6KBA0IVUR4MwUbSJh5lKrHMcHhwIDAQAB",
-
   "name": "__MSG_extensionName__",
   "version": "1.0.0",
   "description": "__MSG_extensionDescription__",
   "default_locale": "zh_CN",
   "minimum_chrome_version": "114",
-  "permissions": ["sidePanel", "storage", "activeTab", "contextMenus", "alarms", "tabs"],
+  "permissions": ["sidePanel", "storage", "activeTab", "contextMenus", "alarms"],
   "host_permissions": ["<all_urls>"],
   "commands": {
     "toggle-sidepanel": {
