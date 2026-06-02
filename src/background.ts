@@ -19,7 +19,9 @@ const LANG_DATA: Record<string, Record<string, string>> = {
   'zh_CN': { contextMenuSave: '📥 收藏到 Quick Paste' },
   'en': { contextMenuSave: '📥 Save to Quick Paste' },
   'ja': { contextMenuSave: '📥 Quick Pasteに保存' },
-  'ko': { contextMenuSave: '📥 Quick Paste에 저장' }
+  'ko': { contextMenuSave: '📥 Quick Paste에 저장' },
+  'de': { contextMenuSave: '📥 In QuickPaste speichern' },
+  'fr': { contextMenuSave: '📥 Enregistrer dans QuickPaste' }
 };
 
 initializePlayaYield({
@@ -37,8 +39,8 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 function getContextMenuTitle(callback: (title: string) => void): void {
   chrome.storage.local.get('quickpaste_language', (result) => {
     const storedLang = result.quickpaste_language;
-    const lang = storedLang ? String(storedLang) : chrome.i18n.getMessage('@@ui_locale') || 'zh_CN';
-    const title = LANG_DATA[lang]?.contextMenuSave || '📥 收藏到 Quick Paste';
+    const lang = storedLang ? String(storedLang) : chrome.i18n.getMessage('@@ui_locale') || 'en';
+    const title = LANG_DATA[lang]?.contextMenuSave || '📥 Save to Quick Paste';
     callback(title);
   });
 }

@@ -1,11 +1,11 @@
 Tired of repetitive copy-pasting in web forms and manually creating test data?
 
-QuickPaste is a one-click web text filler designed specifically for QA engineers, front-end developers, social media managers, and customer service staff! Built on Manifest V3 architecture, it lives in Chrome's Side Panel. Test anywhere, fill anywhere - double your productivity!
+QuickPaste is a one-click web text filler designed specifically for QA engineers, front-end developers, social media managers, and customer service staff! Built on Manifest V3 architecture, it lives in the Side Panel. Test anywhere, fill anywhere - double your productivity!
 
 Why Choose QuickPaste?
 
 1. 100% Local Storage - Privacy Guaranteed
-Unlike cloud-based tools, QuickPaste prioritizes your privacy. All card data and frequently used phrases are stored in your browser's local storage (chrome.storage.local). No cloud servers, no internet uploads, 100% data privacy, enterprise-level security compliance.
+Unlike cloud-based tools, QuickPaste prioritizes your privacy. All card data and frequently used phrases are stored in your browser's local storage. No cloud servers, no internet uploads, 100% data privacy, enterprise-level security compliance.
 
 2. Powerful Card and Label Management
 Support for custom card categories, quick pin (Pinned), and category labels. One-click JSON data export for seamless migration anytime, anywhere.

@@ -71,6 +71,22 @@ const LANG_DATA: Record<string, Record<string, string>> = {
     'btnCancel': '취소',
     'btnConfirmSave': '저장 확인',
     'categoryNone': '분류 없음'
+  },
+  'de': {
+    'contextMenuSaveFull': '📥 In QuickPaste speichern',
+    'pickerPreview': 'Vorschau:',
+    'selectCategories': 'Kategorien auswählen (mehrfach):',
+    'btnCancel': 'Abbrechen',
+    'btnConfirmSave': 'Speichern bestätigen',
+    'categoryNone': 'Keine'
+  },
+  'fr': {
+    'contextMenuSaveFull': '📥 Enregistrer dans QuickPaste',
+    'pickerPreview': 'Aperçu :',
+    'selectCategories': 'Sélectionner les catégories (plusieurs) :',
+    'btnCancel': 'Annuler',
+    'btnConfirmSave': "Confirmer l'enregistrement",
+    'categoryNone': 'Aucune'
   }
 };
 
@@ -79,7 +95,7 @@ let currentLang: string | null = null;
 function loadLanguage(callback: () => void): void {
   chrome.storage.local.get('quickpaste_language', (result) => {
     const storedLang = result.quickpaste_language;
-    currentLang = storedLang ? String(storedLang) : chrome.i18n.getMessage('@@ui_locale') || 'zh_CN';
+    currentLang = storedLang ? String(storedLang) : chrome.i18n.getMessage('@@ui_locale') || 'en';
     callback();
   });
 }

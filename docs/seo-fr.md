@@ -1,11 +1,11 @@
 Fatigué de copier-coller en boucle dans les formulaires web et de créer manuellement des données de test ?
 
-QuickPaste est un remplisseur de texte web en un clic conçu spécialement pour les ingénieurs QA, les développeurs front-end, les gestionnaires de médias sociaux et le personnel de service client ! Basé sur l'architecture Manifest V3, il réside dans le panneau latéral de Chrome. Testez partout, remplissez partout – doublez votre productivité !
+QuickPaste est un remplisseur de texte web en un clic conçu spécialement pour les ingénieurs QA, les développeurs front-end, les gestionnaires de médias sociaux et le personnel de service client ! Basé sur l'architecture Manifest V3, il réside dans le panneau latéral. Testez partout, remplissez partout – doublez votre productivité!
 
 Pourquoi choisir QuickPaste ?
 
 1. Stockage 100% local – Vie privée garantie
-Contrairement aux outils cloud, QuickPaste priorise votre vie privée. Toutes les données des cartes et les phrases fréquemment utilisées sont stockées dans le stockage local de votre navigateur (chrome.storage.local). Aucun serveur cloud, aucun téléchargement sur Internet, 100% de confidentialité des données, conformité sécurité entreprise.
+Contrairement aux outils cloud, QuickPaste priorise votre vie privée. Toutes les données des cartes et les phrases fréquemment utilisées sont stockées dans le stockage local de votre navigateur. Aucun serveur cloud, aucun téléchargement sur Internet, 100% de confidentialité des données, conformité sécurité entreprise.
 
 2. Gestion puissante des cartes et étiquettes
 Prise en charge des catégories de cartes personnalisées, de l’épinglage rapide (Pinned) et des étiquettes de catégorie. Exportation JSON en un clic pour une migration fluide à tout moment, n'importe où.
