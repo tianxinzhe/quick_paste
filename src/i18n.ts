@@ -8,7 +8,9 @@ export const LANGUAGES: Language[] = [
   { code: 'zh_CN', name: 'Chinese', nativeName: '中文' },
   { code: 'en', name: 'English', nativeName: 'English' },
   { code: 'ja', name: 'Japanese', nativeName: '日本語' },
-  { code: 'ko', name: 'Korean', nativeName: '한국어' }
+  { code: 'ko', name: 'Korean', nativeName: '한국어' },
+  { code: 'de', name: 'German', nativeName: 'Deutsch' },
+  { code: 'fr', name: 'French', nativeName: 'Français' }
 ];
 
 const STORAGE_KEY = 'quickpaste_language';
@@ -32,11 +34,22 @@ let currentLang: string | null = null;
 
 export async function initLanguage(): Promise<void> {
   const stored = await getStoredLanguage();
-  currentLang = stored || chrome.i18n.getMessage('@@ui_locale') || 'zh_CN';
+  const browserLang = chrome.i18n.getMessage('@@ui_locale');
+  const supportedLangs = LANGUAGES.map(lang => lang.code);
+  
+  let lang = stored;
+  if (!lang && browserLang) {
+    const normalizedBrowserLang = browserLang.startsWith('zh') ? 'zh_CN' : browserLang.split('-')[0];
+    if (supportedLangs.includes(normalizedBrowserLang)) {
+      lang = normalizedBrowserLang;
+    }
+  }
+  
+  currentLang = lang || 'en';
 }
 
 export function getCurrentLanguage(): string {
-  return currentLang || 'zh_CN';
+  return currentLang || 'en';
 }
 
 export function t(key: string, substitutions?: string | string[]): string {
@@ -61,7 +74,7 @@ function getLangData(lang: string): Record<string, string> | null {
   try {
     const langData: Record<string, Record<string, string>> = {
       'zh_CN': {
-        'extensionName': '快粘助手',
+        'extensionName': '快粘助手 - 一键粘贴 & 表单填充工具',
         'extensionDescription': '绝对隐私、纯本地运行、可视化文本管理的 Chrome 侧边栏快捷文本粘贴工具',
         'cmdToggleDescription': '打开/关闭 Quick Paste 侧边栏',
         'actionDefaultTitle': 'Quick Paste',
@@ -108,6 +121,8 @@ function getLangData(lang: string): Record<string, string> | null {
         'btnBatchDelete': '批量删除',
         'btnEditMode': '编辑',
         'btnCancelEdit': '取消',
+        'modalImportTitle': '导入数据',
+        'labelOverwriteData': '清空原有数据（覆盖导入）',
         'alertInvalidBackup': '无效的备份文件',
         'alertImportOverwrite': '是否覆盖现有数据？\n确定=覆盖，取消=追加合并',
         'alertImportSuccess': '导入成功',
@@ -125,7 +140,7 @@ function getLangData(lang: string): Record<string, string> | null {
         'firstUseGuide': '欢迎使用 Quick Paste！是否查看帮助页面了解如何使用？'
       },
       'en': {
-        'extensionName': 'QuickPaste',
+        'extensionName': 'QuickPaste - Text Paste & Form Filler',
         'extensionDescription': 'Absolutely private, purely local, visual text-based Chrome sidebar for quick text pasting',
         'cmdToggleDescription': 'Open/Close QuickPaste sidebar',
         'actionDefaultTitle': 'QuickPaste',
@@ -172,6 +187,8 @@ function getLangData(lang: string): Record<string, string> | null {
         'btnBatchDelete': 'Delete',
         'btnEditMode': 'Edit',
         'btnCancelEdit': 'Cancel',
+        'modalImportTitle': 'Import Data',
+        'labelOverwriteData': 'Clear existing data (overwrite)',
         'alertInvalidBackup': 'Invalid backup file',
         'alertImportOverwrite': 'Overwrite existing data?\nOK=overwrite, Cancel=merge',
         'alertImportSuccess': 'Import successful',
@@ -189,7 +206,7 @@ function getLangData(lang: string): Record<string, string> | null {
         'firstUseGuide': 'Welcome to QuickPaste! Would you like to view the help page to learn how to use it?'
       },
       'ja': {
-        'extensionName': 'クイックペースト',
+        'extensionName': 'QuickPaste - ワンクリック貼り付け & フォーム入力',
         'extensionDescription': '完全にプライベート、ローカル動作、ビジュアルカード操作的Chromeサイドバー高速テキスト貼り付けツール',
         'cmdToggleDescription': 'QuickPasteサイドバーで開く/閉じる',
         'actionDefaultTitle': 'QuickPaste',
@@ -235,6 +252,8 @@ function getLangData(lang: string): Record<string, string> | null {
         'btnBatchDelete': '削除',
         'btnEditMode': '編集',
         'btnCancelEdit': 'キャンセル',
+        'modalImportTitle': 'データをインポート',
+        'labelOverwriteData': '既存データを消去（上書き）',
         'alertInvalidBackup': '無効なバックアップファイル',
         'alertImportOverwrite': '既存データを上書きしますか？\nOK=上書き、キャンセル=マージ',
         'alertImportSuccess': 'インポート成功',
@@ -252,7 +271,7 @@ function getLangData(lang: string): Record<string, string> | null {
         'firstUseGuide': 'QuickPasteへようこそ！使い方を学ぶためにヘルプページを表示しますか？'
       },
       'ko': {
-        'extensionName': '퀵페스트',
+        'extensionName': 'QuickPaste - 원클릭 붙여넣기 & 폼 입력 도구',
         'extensionDescription': '완전한 프라이버시, 로컬 전용, 비주얼 카드操作的 Chrome 사이드바 빠른 텍스트 붙여넣기 도구',
         'cmdToggleDescription': 'QuickPaste 사이드바 열기/닫기',
         'actionDefaultTitle': 'QuickPaste',
@@ -298,6 +317,8 @@ function getLangData(lang: string): Record<string, string> | null {
         'btnBatchDelete': '삭제',
         'btnEditMode': '편집',
         'btnCancelEdit': '취소',
+        'modalImportTitle': '데이터 가져오기',
+        'labelOverwriteData': '기존 데이터 지우기 (덮어쓰기)',
         'alertInvalidBackup': '유효하지 않은 백업 파일',
         'alertImportOverwrite': '기존 데이터를 덮어쓰시겠습니까？\n확인=덮어쓰기, 취소=병합',
         'alertImportSuccess': '가져오기 성공',
@@ -313,6 +334,142 @@ function getLangData(lang: string): Record<string, string> | null {
         'footerContact': '새 기능이 필요하신가요? 연락처:',
         'btnHelp': '도움말',
         'firstUseGuide': 'QuickPaste에 오신 것을 환영합니다! 사용 방법을 배우기 위해 도움말 페이지를 보시겠습니까?'
+      },
+      'de': {
+        'extensionName': 'QuickPaste - Ein-Klick-Einfügung & Formularfüller',
+        'extensionDescription': 'Absolut privat, reiner Lokallauf, visueller Text-basierter Chrome-Sidebar für schnelle Texteinfügung',
+        'cmdToggleDescription': 'QuickPaste-Sidebar öffnen/schließen',
+        'actionDefaultTitle': 'QuickPaste',
+        'btnAddCard': 'Hinzufügen',
+        'btnExport': 'Exportieren',
+        'btnImport': 'Importieren',
+        'btnLanguage': 'Sprache ändern',
+        'categoryAll': 'Alle',
+        'categoryUncategorized': 'Nicht kategorisiert',
+        'categoryAdd': 'Kategorie hinzufügen',
+        'searchPlaceholder': 'Suche nach Text...',
+        'emptyStateNoCards': 'Noch kein Text',
+        'emptyStateHint': 'Rechtsklick auf Webtext zum schnellen Speichern',
+        'emptyStateAddFirst': 'Ersten Text hinzufügen',
+        'emptyStateLearnMore': 'Mehr Tipps lernen',
+        'onboardingTitle': 'Willkommen bei QuickPaste',
+        'onboardingSubtitle': 'Wiederholtes Tippen vereinfachen',
+        'onboardingStep1Title': 'Rechtsklick zum Speichern',
+        'onboardingStep1Desc': 'Text auf einer Webseite auswählen, Rechtsklick und "In QuickPaste speichern" wählen',
+        'onboardingStep2Title': 'Klicken zum Einfügen',
+        'onboardingStep2Desc': 'Sidebar öffnen, auf eine Karte klicken, um sie in ein Eingabefeld einzufügen',
+        'onboardingStep3Title': 'Mit Kategorien organisieren',
+        'onboardingStep3Desc': 'Kategorien erstellen, um Texte zu organisieren, mit Suche und Batch-Operationen',
+        'onboardingStart': 'Loslegen',
+        'onboardingViewHelp': 'Hilfe anzeigen',
+        'toastClipboardSuccess': 'In Zwischenablage kopiert, Strg+V zum Einfügen',
+        'promptCategoryName': 'Kategorienname eingeben (max 10 Zeichen):',
+        'alertCategoryNameTooLong': 'Kategorienname darf nicht mehr als 10 Zeichen haben',
+        'alertCannotDeleteDefault': 'Standardkategorie kann nicht gelöscht werden',
+        'modalAddTitle': 'Text hinzufügen',
+        'modalEditTitle': 'Text bearbeiten',
+        'textareaPlaceholder': 'Textinhalt eingeben...',
+        'btnSave': 'Speichern',
+        'btnUpdate': 'Aktualisieren',
+        'btnCancel': 'Abbrechen',
+        'btnConfirm': 'Bestätigen',
+        'btnConfirmSave': 'Speichern bestätigen',
+        'categoryNone': 'Keine',
+        'selectCategories': 'Kategorien auswählen (mehrfach):',
+        'confirmDeleteCard': 'Diesen Text löschen?',
+        'confirmDeleteCategory': 'Diese Kategorie löschen?',
+        'confirmBatchDelete': 'Ausgewählte {count} Elemente löschen?',
+        'selectAll': 'Alles auswählen',
+        'btnBatchDelete': 'Löschen',
+        'btnEditMode': 'Bearbeiten',
+        'btnCancelEdit': 'Abbrechen',
+        'modalImportTitle': 'Daten importieren',
+        'labelOverwriteData': 'Vorhandene Daten löschen (Überschreiben)',
+        'alertInvalidBackup': 'Ungültige Sicherungsdatei',
+        'alertImportOverwrite': 'Bestandene Daten überschreiben?\nOK=überschreiben, Abbrechen=zusammenführen',
+        'alertImportSuccess': 'Import erfolgreich',
+        'alertImportFailed': 'Dateiparsing fehlgeschlagen',
+        'contextMenuSave': '📥 In QuickPaste speichern',
+        'contextMenuSaveFull': '📥 In QuickPaste speichern',
+        'pickerPreview': 'Vorschau:',
+        'adSupportLabel': 'QuickPaste unterstützen → Mehr Funktionen freischalten',
+        'langChinese': '中文',
+        'langEnglish': 'English',
+        'langJapanese': '日本語',
+        'langKorean': '한국어',
+        'langGerman': 'Deutsch',
+        'langFrench': 'Français',
+        'footerContact': 'Benötigen Sie neue Funktionen? Kontaktieren Sie mich:',
+        'btnHelp': 'Hilfe',
+        'firstUseGuide': 'Willkommen bei QuickPaste! Möchten Sie die Hilfeseite zum Erlernen der Nutzung anzeigen?'
+      },
+      'fr': {
+        'extensionName': 'QuickPaste - Collage en un clic & Remplisseur de formulaires',
+        'extensionDescription': 'Complètement privé, exécution locale pure, barre latérale Chrome basée sur du texte visuel pour le collage rapide',
+        'cmdToggleDescription': 'Ouvrir/Fermer la barre latérale QuickPaste',
+        'actionDefaultTitle': 'QuickPaste',
+        'btnAddCard': 'Ajouter',
+        'btnExport': 'Exporter',
+        'btnImport': 'Importer',
+        'btnLanguage': 'Changer de langue',
+        'categoryAll': 'Tous',
+        'categoryUncategorized': 'Non catégorisé',
+        'categoryAdd': 'Ajouter une catégorie',
+        'searchPlaceholder': 'Rechercher du texte...',
+        'emptyStateNoCards': 'Aucun texte pour l\'instant',
+        'emptyStateHint': 'Clic droit sur le texte web pour enregistrer rapidement',
+        'emptyStateAddFirst': 'Ajouter votre premier texte',
+        'emptyStateLearnMore': 'En savoir plus',
+        'onboardingTitle': 'Bienvenue dans QuickPaste',
+        'onboardingSubtitle': 'Rendre la saisie répétitive simple',
+        'onboardingStep1Title': 'Clic droit pour enregistrer',
+        'onboardingStep1Desc': 'Sélectionnez du texte sur une page web, faites un clic droit et choisissez "Enregistrer dans QuickPaste"',
+        'onboardingStep2Title': 'Cliquez pour coller',
+        'onboardingStep2Desc': 'Ouvrez la barre latérale, cliquez sur une carte pour la coller dans un champ de saisie',
+        'onboardingStep3Title': 'Organiser avec des catégories',
+        'onboardingStep3Desc': 'Créez des catégories pour organiser les textes, avec recherche et opérations groupées',
+        'onboardingStart': 'Commencer',
+        'onboardingViewHelp': 'Voir l\'aide',
+        'toastClipboardSuccess': 'Copié dans le presse-papiers, Ctrl+V pour coller',
+        'promptCategoryName': 'Entrez le nom de la catégorie (max 10 caractères) :',
+        'alertCategoryNameTooLong': 'Le nom de catégorie ne peut pas dépasser 10 caractères',
+        'alertCannotDeleteDefault': 'Impossible de supprimer la catégorie par défaut',
+        'modalAddTitle': 'Ajouter du texte',
+        'modalEditTitle': 'Modifier le texte',
+        'textareaPlaceholder': 'Saisir le contenu du texte...',
+        'btnSave': 'Enregistrer',
+        'btnUpdate': 'Mettre à jour',
+        'btnCancel': 'Annuler',
+        'btnConfirm': 'Confirmer',
+        'btnConfirmSave': 'Confirmer l\'enregistrement',
+        'categoryNone': 'Aucune',
+        'selectCategories': 'Sélectionner les catégories (plusieurs) :',
+        'confirmDeleteCard': 'Supprimer ce texte ?',
+        'confirmDeleteCategory': 'Supprimer cette catégorie ?',
+        'confirmBatchDelete': 'Supprimer les {count} éléments sélectionnés ?',
+        'selectAll': 'Tout sélectionner',
+        'btnBatchDelete': 'Supprimer',
+        'btnEditMode': 'Éditer',
+        'btnCancelEdit': 'Annuler',
+        'modalImportTitle': 'Importer des données',
+        'labelOverwriteData': 'Effacer les données existantes (remplacement)',
+        'alertInvalidBackup': 'Fichier de sauvegarde invalide',
+        'alertImportOverwrite': 'Remplacer les données existantes ?\nOK=remplacer, Annuler=fusionner',
+        'alertImportSuccess': 'Importation réussie',
+        'alertImportFailed': 'Échec de l\'analyse du fichier',
+        'contextMenuSave': '📥 Enregistrer dans QuickPaste',
+        'contextMenuSaveFull': '📥 Enregistrer dans QuickPaste',
+        'pickerPreview': 'Aperçu :',
+        'adSupportLabel': 'Soutenir QuickPaste → Débloquer plus de fonctionnalités',
+        'langChinese': '中文',
+        'langEnglish': 'English',
+        'langJapanese': '日本語',
+        'langKorean': '한국어',
+        'langGerman': 'Deutsch',
+        'langFrench': 'Français',
+        'footerContact': 'Besoin de nouvelles fonctionnalités ? Contactez-moi :',
+        'btnHelp': 'Aide',
+        'firstUseGuide': 'Bienvenue dans QuickPaste ! Voulez-vous afficher la page d\'aide pour apprendre à l\'utiliser ?'
       }
     };
     return langData[lang] || null;

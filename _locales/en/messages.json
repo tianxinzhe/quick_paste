@@ -1,5 +1,5 @@
 {
-  "extensionName": { "message": "QuickPaste Assistant" },
+  "extensionName": { "message": "QuickPaste - Text Paste & Form Filler" },
   "extensionDescription": { "message": "One-click quick text pasting! Support card management, categories, data backup, privacy-first local storage" },
   "cmdToggleDescription": { "message": "Open/Close QuickPaste sidebar" },
   "cmdFillDescription": { "message": "Paste current input with last pasted content" },
@@ -55,6 +55,9 @@
   "confirmDeleteCard": { "message": "Delete this card?" },
   "confirmDeleteCategory": { "message": "Delete this category?" },
 
+  "modalImportTitle": { "message": "Import Data" },
+  "labelOverwriteData": { "message": "Clear existing data (overwrite)" },
+
   "alertInvalidBackup": { "message": "Invalid backup file" },
   "alertImportOverwrite": { "message": "Overwrite existing data?\nOK=overwrite, Cancel=merge" },
   "alertImportSuccess": { "message": "Import successful" },
@@ -65,5 +68,19 @@
 
   "pickerPreview": { "message": "Preview:" },
 
-  "adSupportLabel": { "message": "Support QuickPaste → Unlock more features" }
+  "adSupportLabel": { "message": "Support QuickPaste → Unlock more features" },
+  "confirmBatchDelete": { "message": "Delete selected {count} items?" },
+  "selectAll": { "message": "Select All" },
+  "btnBatchDelete": { "message": "Batch Delete" },
+  "btnEditMode": { "message": "Edit" },
+  "btnCancelEdit": { "message": "Cancel" },
+  "langChinese": { "message": "中文" },
+  "langEnglish": { "message": "English" },
+  "langJapanese": { "message": "日本語" },
+  "langKorean": { "message": "한국어" },
+  "langGerman": { "message": "Deutsch" },
+  "langFrench": { "message": "Français" },
+  "footerContact": { "message": "Need new features? Contact me:" },
+  "btnHelp": { "message": "Help" },
+  "firstUseGuide": { "message": "Welcome to QuickPaste! Would you like to view the help page to learn how to use it?" }
 }

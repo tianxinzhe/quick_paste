@@ -10,7 +10,7 @@ A simple and efficient browser extension for quick text pasting, helping you ins
 - 📋 **右键收藏** - 通过右键菜单快速收藏选中的文本
 - 🏷️ **分类管理** - 支持文本卡片分类管理
 - 🔄 **数据导入导出** - 支持 JSON 格式的数据备份和恢复
-- 🌐 **多语言支持** - 支持中文、英文、日文、韩文
+- 🌐 **多语言支持** - 支持中文、英文、日文、韩文、德语、法语
 - ⏱️ **变量支持** - 支持日期、时间、随机数等动态变量
 
 ## 支持的变量 / Supported Variables
@@ -70,4 +70,9 @@ MIT License
 
 ## 联系方式 / Contact
 
-如有问题或建议，请联系：tianxinzhe032@gmail.com
+如有问题或建议，可以通过以下方式联系：
+
+- 📧 邮箱：tianxinzhe032@gmail.com
+- 🐙 GitHub：[https://github.com/tianxinzhe/quick_paste](https://github.com/tianxinzhe/quick_paste)
+
+欢迎提交 Issue

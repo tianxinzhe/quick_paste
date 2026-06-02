@@ -2,7 +2,7 @@
   "cards": [
     {
       "id": "ai_en_001",
-      "content": "【Universal Formula】Identity + Platform + Content Type + Style + Structure + Word Count/Duration + Taboos\n\nExample: Xiaohongshu blogger｜Beauty｜3 titles + 800 words body｜Pain-point干货 style｜Short sentences + emoji｜No hard sell",
+      "content": "【Universal Content Formula】Role + Platform + Format + Audience + Goal + Style\n\nExample: Tech reviewer | YouTube Shorts | 60-second review | Beginners | Drive clicks | Casual, enthusiastic",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 1,
@@ -10,7 +10,7 @@
     },
     {
       "id": "ai_en_002",
-      "content": "【Xiaohongshu·Viral种草】You are a seasoned Xiaohongshu blogger with a genuine, friendly tone like sharing with a close friend. Topic：【】, Niche：【Beauty/Home/Fashion/Parenting/Career】. Write: 3 catchy titles + 800 words body + 5 precise tags. Requirements: Titles with emojis, pain points/benefits; Body with bullet points, conversational, authentic experience; Soft种草, no hard sell, ending with CTA (save/like).",
+      "content": "【TikTok Viral Script - 60 Seconds】You're a TikTok creator with a relatable, energetic tone. Topic:【】, Niche:【Beauty/Fitness/DIY/Finance/Tech】. Write a 60-second talking head script. Structure: 0-3s HOOK (shock/question/counterintuitive) → 3-45s 3 VALUE POINTS (short sentences!) → 45-60s CTA (like/comment/follow). Use emojis in text overlay.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 2,
@@ -18,7 +18,7 @@
     },
     {
       "id": "ai_en_003",
-      "content": "【Xiaohongshu·Knowledge/Tips】Xiaohongshu knowledge blogger, professional yet relatable. Topic：【】, Audience：【Beginners/Newbies/Professionals】. Write: Title + 600-800 words body + tags. Structure: Pain-point hook opening → 3-5 key points (one sentence each) → Pitfall warnings + summary.",
+      "content": "【TikTok Hook Generator】Give me 10 viral hooks for【topic】. Each hook must STOP the scroll - use questions, shock value, or curiosity gaps. Example: \"I wasted $1000 on this so you don't have to...\"",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 3,
@@ -26,7 +26,7 @@
     },
     {
       "id": "ai_en_004",
-      "content": "【Xiaohongshu·Lifestyle/Emotional】Xiaohongshu lifestyle blogger, warm and治愈 with vivid imagery. Topic：【】, Style:治愈/Relaxed/Atmospheric. Write: Title + 500 words body + tags. Requirements: Short sentences, sensory descriptions, with a touch of reflection.",
+      "content": "【YouTube Video Script - 5-10 mins】You're a YouTube content creator. Topic:【】, Target Audience:【】. Write full script with: Hook (first 10s!) → Intro → 5-7 main points (each with example/story) → Common mistakes to avoid → Summary + CTA (like/subscribe/comment). Keep energy high, conversational tone.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 4,
@@ -34,7 +34,7 @@
     },
     {
       "id": "ai_en_005",
-      "content": "【Douyin/Video Account·60s Viral Script】Short video scriptwriter, 60-second talking script, fast-paced,人性-driven. Topic：【】, Target audience：【】. Structure: 0-5s strong hook (pain point/rhetorical question/counter-intuitive) → 5-45s 3 key points (one sentence each) → 45-60s summary + CTA (like/comment/follow). Tone: conversational, short sentences, no fluff.",
+      "content": "【YouTube Thumbnail & Title】Create 5 click-worthy thumbnail ideas + titles for video about【topic】. Titles need: Number/List + Benefit + Curiosity. Thumbnails: Bold text overlay, expressive face/emoji, contrasting colors.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 5,
@@ -42,7 +42,7 @@
     },
     {
       "id": "ai_en_006",
-      "content": "【Douyin/Video Account·Sales Script】Sales streamer, real experience, no yelling, no hard push. Product：【】, Key selling points：【】. 60s script: Opening: I've been using it for X days and found one detail nobody mentions… → Middle: 2 real usage scenarios + 1 small flaw (builds trust) → Ending: Who should buy + CTA to cart.",
+      "content": "【Instagram Caption - Feed Post】You're an Instagram influencer with authentic voice. Photo/Reel topic:【】, Aesthetic:【Cozy/Minimal/Vibrant/Edgy】. Write caption: Hook (relatable statement) → Story/value → Call-to-action (save/share/comment \"YES\"). Add 5-10 relevant hashtags.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 6,
@@ -50,7 +50,7 @@
     },
     {
       "id": "ai_en_007",
-      "content": "【Douyin/Video Account·10 Viral Titles】Title strategist, 10 Douyin viral titles. Topic：【】, Style: Pain point/Suspense/Contrast/Numbers. Requirements: Short, conversational, emotional, easy to share.",
+      "content": "【Instagram Carousel Post】Create a 5-slide carousel script for【topic】. Each slide: Clear headline + 1 key point + visual suggestion. End with value-packed takeaway and CTA.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 7,
@@ -58,7 +58,7 @@
     },
     {
       "id": "ai_en_008",
-      "content": "【WeChat Official Account·10K+ Knowledge Article】You are a lead writer for a million-follower account, skilled in深度干货. Topic：【】, Readers：【】, Pain point：【】. Write: Title + 1500 words full article + ending CTA. Structure: Title → Numbers + pain point + benefit; Opening → Story/data/question to resonate; Body → 3-5 sections, each with subtitle + case study + method; Ending →升华 + CTA (wow/share).",
+      "content": "【Twitter/X Thread】Write a 10-tweet thread about【topic】. Thread structure: Hook tweet (start with \"Thread: \" or 🧵) → Problem/observation → 7-8 value points (one per tweet) → Contrarian take → Final summary + CTA (follow/reply). Keep each tweet under 280 chars, use emojis.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 8,
@@ -66,7 +66,7 @@
     },
     {
       "id": "ai_en_009",
-      "content": "【WeChat Official Account·Emotional Story】WeChat account emotional writer,细腻,治愈, relatable. Topic：【】, Protagonist：【】. Write: 1200-word story including: Character setup → Core conflict → Turning point & growth → Warm ending + reflection.",
+      "content": "【Twitter/X Viral Tweet】Give me 10 viral tweet ideas for【topic/niche】. Each tweet should: Be opinionated/controversial OR super helpful, Use emojis, Ask a question or make a bold claim. Example formats: \"Hot take:\", \"3 things I wish I knew before...\", \"Most people get this wrong:\"",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 9,
@@ -74,7 +74,7 @@
     },
     {
       "id": "ai_en_010",
-      "content": "【100 Viral Topics】I am a content creator in【niche】, audience【】, please generate 100 viral-worthy topics. Requirements: Each topic includes scenario + pain point + value; Cover: knowledge/tips/contrast/stories/emotions.",
+      "content": "【LinkedIn Professional Post】You're a【job title/industry】expert. Topic:【】. Write a LinkedIn post: Hook (start with data/question/controversy) → Share 3 key insights from experience → Personal story/example → What you learned → Tag relevant people/companies. Professional but conversational.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 10,
@@ -82,7 +82,7 @@
     },
     {
       "id": "ai_en_011",
-      "content": "【5 High-Engagement Comment Prompts】Write 5 high-engagement comment scripts for【content topic】that resonate and spark discussion.",
+      "content": "【Facebook Engagement Post】Write a Facebook post for【topic/community】that sparks comments. Use: Relatable question + shareable opinion + emotional trigger. Add poll/story prompt. Keep it conversational, not too formal.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 11,
@@ -90,7 +90,7 @@
     },
     {
       "id": "ai_en_012",
-      "content": "【20 Viral Quotes】Write 20 viral quotes around【theme】, short, memorable, suitable for screenshot sharing.",
+      "content": "【Email Newsletter】Write a newsletter for【topic/niche】subscribers. Subject line: Curiosity gap + benefit. Body: Personal opening → 3 value sections (tips/news/resources) → Personal update → CTA (reply/click/read more). Friendly, not salesy.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 12,
@@ -98,7 +98,7 @@
     },
     {
       "id": "ai_en_013",
-      "content": "【Ready-to-Use·Xiaohongshu种草】Xiaohongshu blogger, 3 titles + 800 words, pain-point干货, short sentences emoji, no hard sell.",
+      "content": "【Product Review Script】Review【product/service】for social media. Tone: Authentic, trustworthy. Structure: Opening (why I tried it) → Pros (3 specific points) → Cons (1-2 honest drawbacks) → Who should buy it → Final recommendation + affiliate link disclaimer.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 13,
@@ -106,7 +106,7 @@
     },
     {
       "id": "ai_en_014",
-      "content": "【Ready-to-Use·Douyin Script】Douyin 60s talking script, hook + 3 key points + CTA, conversational fast-paced.",
+      "content": "【Viral Quote Generator】Create 20 shareable quotes for【theme】. Each quote: Short (1-2 lines), memorable, relatable, suitable for graphics. Example: \"The best investment you can make is in yourself.\"",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 14,
@@ -114,7 +114,7 @@
     },
     {
       "id": "ai_en_015",
-      "content": "【Ready-to-Use·WeChat Article】WeChat article 1500 words, sharp觀點 + cases + quotes, easy to share.",
+      "content": "【Content Idea Brainstorm】I'm a【niche】content creator targeting【audience】. Generate 20 viral content ideas that mix: Educational value, Entertainment, Controversy, Relatability. Format: Platform + Idea + Why it works.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 15,
@@ -122,7 +122,7 @@
     },
     {
       "id": "ai_en_016",
-      "content": "【Ready-to-Use·Title Strategy】10 viral titles, contrast pain-point + number hooks, short eye-catching.",
+      "content": "【High-Converting CTA Generator】Write 10 different CTAs for【content type/product】. Use urgency, scarcity, curiosity, or reciprocity. Mix formats: Questions, commands, benefits. Example: \"Save this post - you'll thank me later! 💾\"",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 16,
@@ -130,11 +130,35 @@
     },
     {
       "id": "ai_en_017",
-      "content": "【Ready-to-Use·Soft Sell种草】种草 blogger 500 words, real experience + key selling points, soft sell natural.",
+      "content": "【Comment Engagement Scripts】Write 5 high-engagement comments for【content topic】that spark replies. Use: Personal stories, contrarian views, thought-provoking questions, or helpful additions.",
       "labels": ["AI Prompts"],
       "pinned": false,
       "order": 17,
       "createdAt": 1716876600016
+    },
+    {
+      "id": "ai_en_018",
+      "content": "【Reel Transition Script】Create a 15-second Instagram/TikTok transition video concept for【topic】. Include: Opening shot → Transition effect → Reveal → Quick value point → End screen with text overlay.",
+      "labels": ["AI Prompts"],
+      "pinned": false,
+      "order": 18,
+      "createdAt": 1716876600017
+    },
+    {
+      "id": "ai_en_019",
+      "content": "【Behind-the-Scenes Content】Write a BTS social post for【brand/creator】. Show authenticity: Share struggles, mistakes, or process. Structure: Relatable opening → What you're working on → Challenge you faced → What you learned → CTA to follow along.",
+      "labels": ["AI Prompts"],
+      "pinned": false,
+      "order": 19,
+      "createdAt": 1716876600018
+    },
+    {
+      "id": "ai_en_020",
+      "content": "【Trendjacking Post】Write a post jumping on【trend/challenge】for【niche】. Connect the trend to your audience's interests. Add your unique twist. Include relevant hashtags and @mentions.",
+      "labels": ["AI Prompts"],
+      "pinned": false,
+      "order": 20,
+      "createdAt": 1716876600019
     }
   ],
   "categories": [

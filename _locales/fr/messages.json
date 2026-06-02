@@ -1,0 +1,77 @@
+{
+  "extensionName": { "message": "QuickPaste - Collage en un clic & Remplisseur de formulaires" },
+  "extensionDescription": { "message": "Collage de texte rapide en un clic ! Gestion de cartes, catégories, sauvegarde de données, stockage local respectant la vie privée" },
+  "cmdToggleDescription": { "message": "Ouvrir/Fermer la barre latérale QuickPaste" },
+  "cmdFillDescription": { "message": "Remplir le champ de saisie avec le dernier contenu collé" },
+  "cmdSaveSelectionDescription": { "message": "Enregistrer le texte sélectionné sous forme de carte" },
+  "actionDefaultTitle": { "message": "QuickPaste" },
+
+  "btnAddCard": { "message": "Ajouter" },
+  "btnExport": { "message": "Exporter" },
+  "btnImport": { "message": "Importer" },
+  "btnLanguage": { "message": "Langue" },
+
+  "categoryAll": { "message": "Tous" },
+  "categoryUncategorized": { "message": "Non catégorisé" },
+  "categoryAdd": { "message": "Ajouter une catégorie" },
+
+  "searchPlaceholder": { "message": "Rechercher des cartes..." },
+
+  "emptyStateNoCards": { "message": "Aucune carte pour l'instant" },
+  "emptyStateHint": { "message": "Clic droit sur le texte web pour enregistrer rapidement" },
+  "emptyStateAddFirst": { "message": "Ajouter votre premier texte" },
+  "emptyStateLearnMore": { "message": "En savoir plus" },
+
+  "toastClipboardSuccess": { "message": "Copié dans le presse-papiers, Ctrl+V pour coller" },
+  "toastFillSuccess": { "message": "Collé avec succès" },
+
+  "promptCategoryName": { "message": "Entrez le nom de la catégorie (max 10 caractères) :" },
+  "alertCategoryNameTooLong": { "message": "Le nom de catégorie ne peut pas dépasser 10 caractères" },
+  "alertCannotDeleteDefault": { "message": "Impossible de supprimer la catégorie par défaut" },
+
+  "modalAddTitle": { "message": "Ajouter une carte" },
+  "modalEditTitle": { "message": "Modifier une carte" },
+  "textareaPlaceholder": { "message": "Saisir le contenu du texte..." },
+  "btnSave": { "message": "Enregistrer" },
+  "btnUpdate": { "message": "Mettre à jour" },
+  "btnCancel": { "message": "Annuler" },
+  "btnConfirm": { "message": "Confirmer" },
+  "btnConfirmSave": { "message": "Confirmer l'enregistrement" },
+
+  "categoryNone": { "message": "Aucune" },
+  "selectCategories": { "message": "Sélectionner les catégories (plusieurs) :" },
+
+  "confirmDeleteCard": { "message": "Supprimer cette carte ?" },
+  "confirmDeleteCategory": { "message": "Supprimer cette catégorie ?" },
+  "confirmBatchDelete": { "message": "Supprimer les {count} textes sélectionnés ?" },
+
+  "selectAll": { "message": "Tout sélectionner" },
+  "btnBatchDelete": { "message": "Suppression groupée" },
+  "btnEditMode": { "message": "Éditer" },
+  "btnCancelEdit": { "message": "Annuler" },
+
+  "alertInvalidBackup": { "message": "Fichier de sauvegarde invalide" },
+  "alertImportOverwrite": { "message": "Remplacer les données existantes ?" },
+  "alertImportSuccess": { "message": "Importation réussie" },
+  "alertImportFailed": { "message": "Échec de l'analyse du fichier" },
+  "modalImportTitle": { "message": "Importer des données" },
+  "labelOverwriteData": { "message": "Effacer les données existantes (remplacement)" },
+
+  "contextMenuSave": { "message": "📥 Enregistrer dans QuickPaste" },
+  "contextMenuSaveFull": { "message": "📥 Enregistrer dans QuickPaste" },
+
+  "pickerPreview": { "message": "Aperçu :" },
+
+  "adSupportLabel": { "message": "Soutenir QuickPaste → Débloquer plus de fonctionnalités" },
+
+  "langChinese": { "message": "中文" },
+  "langEnglish": { "message": "English" },
+  "langJapanese": { "message": "日本語" },
+  "langKorean": { "message": "한국어" },
+  "langGerman": { "message": "Deutsch" },
+  "langFrench": { "message": "Français" },
+
+  "footerContact": { "message": "Besoin de nouvelles fonctionnalités ? Contactez-moi :" },
+  "btnHelp": { "message": "Aide" },
+  "firstUseGuide": { "message": "Bienvenue dans QuickPaste ! Voulez-vous afficher la page d'aide pour apprendre à l'utiliser ?" }
+}

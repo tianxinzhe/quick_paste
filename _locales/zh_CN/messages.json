@@ -1,5 +1,5 @@
 {
-  "extensionName": { "message": "快粘助手" },
+  "extensionName": { "message": "快粘助手 - 一键粘贴 & 表单填充工具" },
   "extensionDescription": { "message": "一键快速粘贴文本！支持卡片管理、分类标签、数据备份，纯本地运行保护隐私" },
   "cmdToggleDescription": { "message": "打开/关闭 Quick Paste 侧边栏" },
   "cmdFillDescription": { "message": "使用上次粘贴的内容填充当前输入框" },
@@ -19,6 +19,8 @@
 
   "emptyStateNoCards": { "message": "暂无文本" },
   "emptyStateHint": { "message": "右键网页文本可快速收藏" },
+  "emptyStateAddFirst": { "message": "添加第一条文本" },
+  "emptyStateLearnMore": { "message": "了解更多使用技巧" },
 
   "toastClipboardSuccess": { "message": "已写入剪贴板，请 Ctrl+V" },
   "toastFillSuccess": { "message": "粘贴成功" },
@@ -69,5 +71,17 @@
 
   "footerContact": { "message": "需要新功能？联系我：" },
   "btnHelp": { "message": "使用帮助" },
-  "firstUseGuide": { "message": "欢迎使用 Quick Paste！是否查看帮助页面了解如何使用？" }
+  "firstUseGuide": { "message": "欢迎使用 Quick Paste！是否查看帮助页面了解如何使用？" },
+  "onboardingTitle": { "message": "欢迎使用 Quick Paste" },
+  "onboardingSubtitle": { "message": "让重复输入变得简单" },
+  "onboardingStep1Title": { "message": "右键收藏" },
+  "onboardingStep1Desc": { "message": "在网页上选中文本，右键选择「收藏到 Quick Paste」" },
+  "onboardingStep2Title": { "message": "点击粘贴" },
+  "onboardingStep2Desc": { "message": "打开侧边栏，点击任意卡片即可粘贴到输入框" },
+  "onboardingStep3Title": { "message": "分类管理" },
+  "onboardingStep3Desc": { "message": "创建分类整理文本，支持搜索和批量操作" },
+  "onboardingStart": { "message": "开始使用" },
+  "onboardingViewHelp": { "message": "查看帮助" },
+  "langGerman": { "message": "Deutsch" },
+  "langFrench": { "message": "Français" }
 }

@@ -75,13 +75,7 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
 });
 
 chrome.commands.onCommand.addListener((command) => {
-  if (command === 'toggle-sidepanel') {
-    chrome.windows.getCurrent((window) => {
-      if (window?.id) {
-        chrome.sidePanel.open({ windowId: window.id });
-      }
-    });
-  } else if (command === 'fill-last-input') {
+  if (command === 'fill-last-input') {
     chrome.storage.session.get('lastFilledText', (result) => {
       if (result.lastFilledText) {
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {

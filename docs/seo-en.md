@@ -1,11 +1,27 @@
-QuickPaste Assistant - The Smart Way to Type Repetitive Text in Chrome
+Tired of repetitive copy-pasting in web forms and manually creating test data?
 
-Do you type the same text over and over every day? Filling forms, replying to customers, entering test data, pasting AI prompts. QuickPaste turns all of that into a single click.
+QuickPaste is a one-click web text filler designed specifically for QA engineers, front-end developers, social media managers, and customer service staff! Built on Manifest V3 architecture, it lives in Chrome's Side Panel. Test anywhere, fill anywhere - double your productivity!
 
-Select any text on any webpage, right-click, and save it to your side panel. When you need it again, just click the card and it fills the active input instantly. No more switching windows, no more copy-pasting.
+Why Choose QuickPaste?
 
-All data is stored in your browser locally. No accounts, no tracking, no server uploads. Uninstall and everything is gone.
+1. 100% Local Storage - Privacy Guaranteed
+Unlike cloud-based tools, QuickPaste prioritizes your privacy. All card data and frequently used phrases are stored in your browser's local storage (chrome.storage.local). No cloud servers, no internet uploads, 100% data privacy, enterprise-level security compliance.
 
-Built-in template packs for AI prompts and software testing. Ready to use right after installation. Supports English, 简体中文, 日本語, 한국어.
+2. Powerful Card and Label Management
+Support for custom card categories, quick pin (Pinned), and category labels. One-click JSON data export for seamless migration anytime, anywhere.
 
-If you deal with repetitive text entry daily, this tool will save you hours. Completely free and privacy-first.
+3. System-level Right-click Selection Save
+See frequently used text or phrases on any webpage? Just select the text, right-click, choose "Save to QuickPaste", and it instantly syncs to the side panel. No manual creation needed.
+
+4. Minimalist Interaction - Shortcuts Ready
+Supports shortcuts Alt+V to fill last content, Alt+C to save selected text as card. Seamlessly integrates into your daily workflow.
+
+5. Multilingual Support
+Supports Chinese, English, Japanese, Korean, German, French - meeting global user needs.
+
+Use Cases:
+- QA Engineers: High-frequency form testing, boundary value testing, efficient Jira/Zen desk ticket submission.
+- Operations & Customer Service: Quick responses with frequently used phrases, one-click copy-fill for customer scripts.
+- Regular Users: Common form configuration, efficient text snippet clipboard management.
+
+Install QuickPaste now and say goodbye to mindless copy-pasting!

@@ -1,5 +1,5 @@
 {
-  "extensionName": { "message": "クイックペーストアシスタント" },
+  "extensionName": { "message": "QuickPaste - ワンクリック貼り付け & フォーム入力" },
   "extensionDescription": { "message": "ワンクリックでテキストを素早く貼り付け！カード管理、カテゴリ、データバックアップに対応、プライバシー保護のローカルストレージ" },
   "cmdToggleDescription": { "message": "QuickPasteサイドバーで開く/閉じる" },
   "cmdFillDescription": { "message": "前回の内容で現在の入力欄貼り付け" },
@@ -55,6 +55,9 @@
   "confirmDeleteCard": { "message": "このカードを削除しますか？" },
   "confirmDeleteCategory": { "message": "この分類を削除しますか？" },
 
+  "modalImportTitle": { "message": "データをインポート" },
+  "labelOverwriteData": { "message": "既存データを消去（上書き）" },
+
   "alertInvalidBackup": { "message": "無効なバックアップファイル" },
   "alertImportOverwrite": { "message": "既存データを上書きしますか？\nOK=上書き、キャンセル=マージ" },
   "alertImportSuccess": { "message": "インポート成功" },
@@ -65,5 +68,19 @@
 
   "pickerPreview": { "message": "プレビュー：" },
 
-  "adSupportLabel": { "message": "QuickPasteをサポート → もっと機能解放" }
+  "adSupportLabel": { "message": "QuickPasteをサポート → もっと機能解放" },
+  "confirmBatchDelete": { "message": "選択した {count} 件を削除しますか？" },
+  "selectAll": { "message": "全て選択" },
+  "btnBatchDelete": { "message": "削除" },
+  "btnEditMode": { "message": "編集" },
+  "btnCancelEdit": { "message": "キャンセル" },
+  "langChinese": { "message": "中文" },
+  "langEnglish": { "message": "English" },
+  "langJapanese": { "message": "日本語" },
+  "langKorean": { "message": "한국어" },
+  "langGerman": { "message": "Deutsch" },
+  "langFrench": { "message": "Français" },
+  "footerContact": { "message": "新機能が必要？連絡先：" },
+  "btnHelp": { "message": "ヘルプ" },
+  "firstUseGuide": { "message": "QuickPasteへようこそ！使い方を学ぶためにヘルプページを表示しますか？" }
 }

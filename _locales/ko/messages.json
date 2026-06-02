@@ -1,5 +1,5 @@
 {
-  "extensionName": { "message": "퀵페스트 어시스턴트" },
+  "extensionName": { "message": "QuickPaste - 원클릭 붙여넣기 & 폼 입력 도구" },
   "extensionDescription": { "message": "한 번 클릭으로 텍스트 빠르게 붙여넣기! 카드 관리, 카테고리, 데이터 백업 지원, 개인정보 보호 로컬 스토리지" },
   "cmdToggleDescription": { "message": "QuickPaste 사이드바 열기/닫기" },
   "cmdFillDescription": { "message": "이전 입력 내용으로 현재 입력란 채우기" },
@@ -54,6 +54,9 @@
 
   "confirmDeleteCard": { "message": "이 카드를 삭제하시겠습니까？" },
   "confirmDeleteCategory": { "message": "이 분류를 삭제하시겠습니까？" },
+
+  "modalImportTitle": { "message": "데이터 가져오기" },
+  "labelOverwriteData": { "message": "기존 데이터 지우기 (덮어쓰기)" },
 
   "alertInvalidBackup": { "message": "유효하지 않은 백업 파일" },
   "alertImportOverwrite": { "message": "기존 데이터를 덮어쓰시겠습니까？\n확인=덮어쓰기, 취소=병합" },
