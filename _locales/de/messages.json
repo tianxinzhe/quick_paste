@@ -73,5 +73,15 @@
 
   "footerContact": { "message": "Benötigen Sie neue Funktionen? Kontaktieren Sie mich:" },
   "btnHelp": { "message": "Hilfe" },
-  "firstUseGuide": { "message": "Willkommen bei QuickPaste! Möchten Sie die Hilfeseite zum Erlernen der Nutzung anzeigen?" }
+  "firstUseGuide": { "message": "Willkommen bei QuickPaste! Möchten Sie die Hilfeseite zum Erlernen der Nutzung anzeigen?" },
+  "onboardingTitle": { "message": "Willkommen bei QuickPaste" },
+  "onboardingSubtitle": { "message": "Wiederholtes Tippen vereinfachen" },
+  "onboardingStep1Title": { "message": "Rechtsklick zum Speichern" },
+  "onboardingStep1Desc": { "message": "Text auf einer Webseite auswählen, Rechtsklick und \"In QuickPaste speichern\" wählen" },
+  "onboardingStep2Title": { "message": "Klicken zum Einfügen" },
+  "onboardingStep2Desc": { "message": "Sidebar öffnen, auf eine Karte klicken, um sie in ein Eingabefeld einzufügen" },
+  "onboardingStep3Title": { "message": "Mit Kategorien organisieren" },
+  "onboardingStep3Desc": { "message": "Kategorien erstellen, um Texte zu organisieren, mit Suche und Batch-Operationen" },
+  "onboardingStart": { "message": "Loslegen" },
+  "onboardingViewHelp": { "message": "Hilfe anzeigen" }
 }
