@@ -43,6 +43,10 @@ body {
   font-size: 18px;
   font-weight: 600;
   color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
 }
 
 .header-actions {
@@ -185,49 +189,85 @@ body {
   border-color: #667eea;
 }
 
+/* 工具栏容器 */
 .card-actions-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 8px 12px;
-  background: #f8f9fa;
-  border-bottom: 1px solid #e0e0e0;
-  gap: 8px;
+  background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+  border-bottom: 1px solid #e8e8e8;
+  gap: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
-.card-actions-bar .action-btn-primary {
-  display: flex;
+.card-actions-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* 按钮基础样式 - 统一高度36px */
+.card-actions-bar button {
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px 12px;
-  background: #667eea;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 12px;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  border: none;
+  outline: none;
+}
+
+/* 主按钮 */
+.card-actions-bar .action-btn-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  min-width: 80px;
 }
 
 .card-actions-bar .action-btn-primary:hover {
-  background: #5a6fd6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
 }
 
+.card-actions-bar .action-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* 次要按钮 */
+.card-actions-bar .action-btn-secondary {
+  background: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+  min-width: 36px;
+}
+
+.card-actions-bar .action-btn-secondary:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+}
+
+/* 危险按钮 */
 .card-actions-bar .action-btn-danger {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 12px;
-  background: #fff;
-  color: #dc3545;
-  border: 1px solid #dc3545;
-  border-radius: 4px;
-  font-size: 12px;
-  cursor: pointer;
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fee2e2;
+  min-width: 36px;
 }
 
 .card-actions-bar .action-btn-danger:hover:not(:disabled) {
-  background: #dc3545;
+  background: #dc2626;
   color: white;
+  border-color: #dc2626;
 }
 
 .card-actions-bar .action-btn-danger:disabled {
@@ -235,71 +275,111 @@ body {
   cursor: not-allowed;
 }
 
-.card-actions-bar .selected-count {
-  background: #dc3545;
-  color: white;
-  font-size: 11px;
-  padding: 1px 5px;
-  border-radius: 10px;
+/* 取消按钮 */
+.card-actions-bar .action-btn-cancel {
+  background: transparent;
+  color: #6b7280;
+  min-width: 36px;
 }
 
-.card-actions-bar .action-btn-danger:disabled .selected-count {
-  background: #ccc;
+.card-actions-bar .action-btn-cancel:hover {
+  background: #f3f4f6;
+  color: #374151;
 }
 
+/* 图标按钮 */
+.card-actions-bar .icon-btn {
+  padding: 0;
+  width: 36px;
+}
+
+.card-actions-bar .icon-btn .btn-icon {
+  font-size: 16px;
+}
+
+/* 全选复选框 - 与按钮等高 */
 .card-actions-bar .select-all-checkbox {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 12px;
-  color: #666;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  color: #4b5563;
   cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.card-actions-bar .select-all-checkbox:hover {
+  background: #f3f4f6;
 }
 
 .card-actions-bar .select-all-checkbox input {
   cursor: pointer;
+  width: 15px;
+  height: 15px;
+  accent-color: #6366f1;
 }
 
-.card-actions-bar .action-btn-secondary {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 12px;
-  background: #fff;
-  color: #666;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.card-actions-bar .action-btn-secondary:hover {
-  background: #f0f0f0;
-  border-color: #ccc;
-}
-
-.card-actions-bar .action-btn-cancel {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 12px;
-  background: #fff;
-  color: #999;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.card-actions-bar .action-btn-cancel:hover {
-  background: #f5f5f5;
-  color: #666;
-}
-
+/* 编辑模式控件 */
 .edit-mode-controls {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* 选中数量徽章 - 独立显示 */
+.edit-mode-controls .selected-count {
+  background: #6366f1;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.share-item {
+  margin-bottom: 12px;
+}
+
+.share-item label {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.share-item input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: monospace;
+  background: #f9f9f9;
+  cursor: text;
+}
+
+.share-item .copy-btn {
+  margin-top: 6px;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.share-item .copy-btn:hover {
+  opacity: 0.9;
 }
 
 .card-list {
@@ -549,6 +629,116 @@ body {
   border-color: #667eea;
 }
 
+/* 编辑模态框样式 */
+.edit-modal {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.modal-body {
+  padding: 16px 20px;
+  flex: 1;
+}
+
+.modal-section {
+  margin-top: 16px;
+}
+
+.section-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.category-selector-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-tag {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  color: #666;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.category-tag:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.category-tag.selected {
+  border-color: #667eea;
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.modal-footer {
+  display: flex;
+  gap: 10px;
+  padding: 12px 20px;
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.btn-primary {
+  flex: 1;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  padding: 10px 16px;
+  background: #f0f0f0;
+  color: #666;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: #e0e0e0;
+}
+
 .close-modal {
   float: right;
   font-size: 20px;
@@ -593,24 +783,161 @@ body {
   margin-bottom: 14px;
 }
 
-#save-card-btn,
-#update-card-btn {
-  width: 100%;
-  padding: 10px;
+/* Tab切换样式 */
+.tabs-wrapper {
+  display: flex;
+  background: #f0f0f0;
+  border-radius: 6px;
+  padding: 3px;
+  margin-bottom: 14px;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 8px;
+  border-radius: 4px;
+  background: transparent;
+  color: #666;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.tab-item:hover {
+  background: #e5e5e5;
+}
+
+.tab-item.active {
+  background: white;
+  color: #667eea;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.tab-icon {
+  font-size: 13px;
+}
+
+.batch-hint {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.category-selector-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+#category-selector {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.add-category-btn-inline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+.add-category-btn-inline:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.add-category-btn-inline:active {
+  transform: scale(0.95);
+}
+
+/* 按钮组 */
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-cancel {
+  flex: 1;
+  min-width: 80px;
+  max-width: 120px;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cancel:hover {
+  background: #f8f8f8;
+  border-color: #ccc;
+}
+
+.btn-save {
+  flex: 2;
+  min-width: 100px;
+  max-width: 150px;
+  padding: 10px 14px;
   border: none;
   border-radius: 8px;
-  background: #667eea;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   color: white;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#save-card-btn:hover,
-#update-card-btn:hover {
-  background: #5a6fd6;
+.btn-save:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
+
+.btn-save:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(102, 126, 234, 0.3);
+}
+
+
 
 .language-menu {
   position: fixed;

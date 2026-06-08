@@ -190,6 +190,14 @@ chrome.runtime.onMessage.addListener((request: { action: string; [key: string]: 
       chrome.storage.local.set({ categories: request.categories });
       sendResponse({ success: true });
       return true;
+    case 'saveCategory':
+      chrome.storage.local.get('categories', (result) => {
+        const categories = ((result.categories as Category[]) || []).filter(Boolean);
+        categories.push(request.category as Category);
+        chrome.storage.local.set({ categories });
+        sendResponse({ success: true });
+      });
+      return true;
     case 'saveCardFromSelection':
       const card: Card = {
         id: Date.now().toString(),

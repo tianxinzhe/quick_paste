@@ -11,9 +11,9 @@
   <div class="header">
     <h1>Quick Paste</h1>
     <div class="header-actions">
-      <button id="add-btn-top" data-i18n-title="btnAddCard" title="Add Card">+</button>
       <button id="export-btn" data-i18n-title="btnExport" title="Export">📥</button>
       <button id="import-btn" data-i18n-title="btnImport" title="Import">📤</button>
+      <button id="share-btn" data-i18n-title="btnShare" title="Share">🔗</button>
       <button id="lang-btn" data-i18n-title="btnLanguage" title="切换语言">🌐</button>
       <button id="help-btn" data-i18n-title="btnHelp" title="使用帮助">❓</button>
     </div>
@@ -30,25 +30,28 @@
   </div>
 
   <div class="card-actions-bar" id="card-actions-bar">
-    <button id="add-card-btn" class="action-btn-primary" data-i18n-title="btnAddCard">
+    <button id="add-card-btn" class="action-btn-primary" data-i18n-title="btnAddCard" title="添加">
       <span class="btn-icon">+</span>
       <span class="btn-text" data-i18n="btnAddCard">添加</span>
     </button>
-    <button id="edit-mode-btn" class="action-btn-secondary" data-i18n-title="btnEditMode">
-      <span class="btn-text" data-i18n="btnEditMode">编辑</span>
+    <button id="edit-mode-btn" class="action-btn-secondary icon-btn" data-i18n-title="btnEditMode" title="编辑模式">
+      <span class="btn-icon">✏️</span>
     </button>
     <div class="edit-mode-controls" id="edit-mode-controls" style="display: none;">
-      <button id="batch-delete-btn" class="action-btn-danger" data-i18n-title="btnBatchDelete" disabled>
-        <span class="btn-text" data-i18n="btnBatchDelete">批量删除</span>
-        <span class="selected-count" id="selected-count">0</span>
+      <button id="batch-change-category-btn" class="action-btn-secondary icon-btn" data-i18n-title="btnBatchChangeCategory" disabled title="批量换分类">
+        <span class="btn-icon">🏷️</span>
+      </button>
+      <button id="batch-delete-btn" class="action-btn-danger icon-btn" data-i18n-title="btnBatchDelete" disabled title="批量删除">
+        <span class="btn-icon">🗑️</span>
       </button>
       <label class="select-all-checkbox">
         <input type="checkbox" id="select-all">
         <span data-i18n="selectAll">全选</span>
       </label>
-      <button id="cancel-edit-btn" class="action-btn-cancel" data-i18n-title="btnCancelEdit">
-        <span class="btn-text" data-i18n="btnCancelEdit">取消</span>
+      <button id="cancel-edit-btn" class="action-btn-cancel icon-btn" data-i18n-title="btnCancelEdit" title="取消">
+        <span class="btn-icon">✖️</span>
       </button>
+      <span class="selected-count" id="selected-count">0</span>
     </div>
   </div>
 

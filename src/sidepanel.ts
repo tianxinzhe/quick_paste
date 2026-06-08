@@ -94,7 +94,7 @@ function renderCategoryTabs(): void {
       const target = e.target as HTMLElement;
       const deleteBtn = target.closest('.delete-cat') as HTMLElement | null;
       if (deleteBtn) {
-        deleteCategory(deleteBtn.dataset.id || '');
+        deleteCategory((deleteBtn as HTMLElement).dataset.id || '');
         return;
       }
 
@@ -302,7 +302,7 @@ function renderCards(): void {
           <a href="help.html" target="_blank" class="empty-state-link">${t('emptyStateLearnMore')}</a>
         </div>
       </div>`;
-    container.querySelector('#empty-state-add-btn')?.addEventListener('click', showAddCardModal);
+    container.querySelector('#empty-state-add-btn')?.addEventListener('click', () => showAddCardModal(false));
     return;
   }
 
@@ -368,7 +368,7 @@ function renderCards(): void {
         return;
       }
 
-      const cardId = cardEl.dataset.id || '';
+      const cardId = (cardEl as HTMLElement).dataset.id || '';
       const cardData = cards.find(c => c.id === cardId);
       if (cardData) {
         fillInput(cardData.content);
@@ -384,7 +384,7 @@ function renderCards(): void {
       cardEl.draggable = true;
 
       cardEl.addEventListener('dragstart', (e) => {
-        draggedCardId = cardEl.dataset.id || null;
+        draggedCardId = (cardEl as HTMLElement).dataset.id || null;
         cardEl.classList.add('dragging');
         e.dataTransfer!.effectAllowed = 'move';
       });
@@ -402,7 +402,7 @@ function renderCards(): void {
 
       cardEl.addEventListener('dragenter', (e) => {
         e.preventDefault();
-        if (cardEl.dataset.id !== draggedCardId) {
+        if ((cardEl as HTMLElement).dataset.id !== draggedCardId) {
           cardEl.classList.add('drag-over');
         }
       });
@@ -414,10 +414,10 @@ function renderCards(): void {
       cardEl.addEventListener('drop', (e) => {
         e.preventDefault();
         cardEl.classList.remove('drag-over');
-        if (!draggedCardId || draggedCardId === cardEl.dataset.id) return;
+        if (!draggedCardId || draggedCardId === (cardEl as HTMLElement).dataset.id) return;
 
         const fromIndex = cards.findIndex(c => c.id === draggedCardId);
-        const toIndex = cards.findIndex(c => c.id === cardEl.dataset.id);
+        const toIndex = cards.findIndex(c => c.id === (cardEl as HTMLElement).dataset.id);
         if (fromIndex === -1 || toIndex === -1) return;
 
         const [moved] = cards.splice(fromIndex, 1);
@@ -436,51 +436,172 @@ function escapeHtml(text: string): string {
   return div.innerHTML;
 }
 
-function showAddCardModal(): void {
+function showAddCardModal(isBatchMode: boolean = false): void {
   const modal = document.createElement('div');
   modal.className = 'modal';
+  
   modal.innerHTML = `
     <div class="modal-content">
       <span class="close-modal">&times;</span>
-      <h3>${t('modalAddTitle')}</h3>
-      <textarea id="new-card-content" placeholder="${t('textareaPlaceholder')}"></textarea>
-      <div id="category-selector"></div>
-      <button id="save-card-btn">${t('btnSave')}</button>
+      
+      <div class="tabs-wrapper">
+        <div class="tab-item ${!isBatchMode ? 'active' : ''}" id="tab-single">
+          <span class="tab-icon">📝</span>
+          <span>${t('btnSingleAdd')}</span>
+        </div>
+        <div class="tab-item ${isBatchMode ? 'active' : ''}" id="tab-batch">
+          <span class="tab-icon">📦</span>
+          <span>${t('btnBatchAdd')}</span>
+        </div>
+      </div>
+      
+      <textarea id="new-card-content" placeholder="${isBatchMode ? t('batchSeparatorHint') : t('textareaPlaceholder')}"></textarea>
+      
+      <div class="category-selector-row">
+        <div id="category-selector"></div>
+        <span class="add-category-btn-inline" id="add-category-btn-inline">+</span>
+      </div>
+      
+      <div class="btn-group">
+        <button id="cancel-btn" class="btn-cancel">${t('btnCancel')}</button>
+        <button id="save-card-btn" class="btn-save">${isBatchMode ? t('btnBatchAddAll') : t('btnSave')}</button>
+      </div>
     </div>
   `;
   document.body.appendChild(modal);
 
   modal.querySelector('.close-modal')?.addEventListener('click', () => modal.remove());
 
-  renderCategorySelector('new-card-content');
+  const tabSingle = document.getElementById('tab-single');
+  const tabBatch = document.getElementById('tab-batch');
+  
+  tabSingle?.addEventListener('click', () => {
+    modal.remove();
+    showAddCardModal(false);
+  });
+  
+  tabBatch?.addEventListener('click', () => {
+    modal.remove();
+    showAddCardModal(true);
+  });
+
+  renderCategorySelector();
+
+  document.getElementById('add-category-btn-inline')?.addEventListener('click', async () => {
+    const newCatName = prompt(t('promptCategoryName'));
+    if (!newCatName || newCatName.trim().length === 0) return;
+    if (newCatName.length > 10) {
+      showToast(t('alertCategoryNameTooLong'));
+      return;
+    }
+    if (categories.some(cat => cat.name === newCatName)) {
+      showToast(t('alertCategoryNameExists'));
+      return;
+    }
+    
+    const newCategory: Category = {
+      id: Date.now().toString(),
+      name: newCatName.trim(),
+      color: getColorByName(newCatName)
+    };
+    
+    await sendMessage('saveCategory', { category: newCategory });
+    await loadCategories();
+    renderCategorySelector();
+  });
 
   document.getElementById('save-card-btn')?.addEventListener('click', async () => {
     const content = (document.getElementById('new-card-content') as HTMLTextAreaElement)?.value;
     if (!content || content.trim().length === 0) return;
 
     const selectedLabels = Array.from(document.querySelectorAll('.category-check.selected'))
-      .map(el => (el as HTMLElement).dataset.id || '');
+      .map(el => (el as HTMLElement).dataset.id || '')
+      .filter(Boolean);
 
-    const newCard: Card = {
-      id: Date.now().toString(),
-      content: content.trim(),
-      labels: selectedLabels,
-      pinned: false,
-      order: cards.length,
-      createdAt: Date.now()
-    };
+    if (isBatchMode) {
+      const lines = content.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+      
+      if (lines.length > 50) {
+        showToast(t('batchAddLimit'));
+        return;
+      }
 
-    await sendMessage('saveCard', { card: newCard });
-    loadCards();
+      // 去重：同一分类下内容相同的只保留一个
+      const existingContents = new Set(
+        cards
+          .filter(c => selectedLabels.length === 0 || c.labels.some(l => selectedLabels.includes(l)))
+          .map(c => c.content.trim().toLowerCase())
+      );
+      
+      const uniqueLines: string[] = [];
+      const duplicates: string[] = [];
+      
+      lines.forEach(line => {
+        const normalized = line.toLowerCase();
+        if (!existingContents.has(normalized)) {
+          uniqueLines.push(line);
+          existingContents.add(normalized); // 防止批量内重复
+        } else {
+          duplicates.push(line);
+        }
+      });
+      
+      for (const line of uniqueLines) {
+        const newCard: Card = {
+          id: Date.now().toString() + Math.random(),
+          content: line,
+          labels: selectedLabels,
+          pinned: false,
+          order: cards.length,
+          createdAt: Date.now()
+        };
+        await sendMessage('saveCard', { card: newCard });
+      }
+      
+      loadCards();
+      
+      if (duplicates.length > 0) {
+        showToast(t('batchAddDuplicate').replace('{added}', uniqueLines.length.toString()).replace('{skipped}', duplicates.length.toString()));
+      } else {
+        showToast(t('batchAddSuccess').replace('{count}', uniqueLines.length.toString()));
+      }
+    } else {
+      // 单条添加：检查是否重复
+      const normalizedContent = content.trim().toLowerCase();
+      const isDuplicate = cards.some(c => 
+        c.content.trim().toLowerCase() === normalizedContent &&
+        (selectedLabels.length === 0 || c.labels.some(l => selectedLabels.includes(l)))
+      );
+      
+      if (isDuplicate) {
+        showToast(t('alertDuplicateContent'));
+        return;
+      }
+      
+      const newCard: Card = {
+        id: Date.now().toString(),
+        content: content.trim(),
+        labels: selectedLabels,
+        pinned: false,
+        order: cards.length,
+        createdAt: Date.now()
+      };
+      
+      await sendMessage('saveCard', { card: newCard });
+      loadCards();
+    }
+    
     modal.remove();
   });
+
+  document.getElementById('cancel-btn')?.addEventListener('click', () => modal.remove());
 }
 
-function renderCategorySelector(textareaId: string): void {
+function renderCategorySelector(): void {
   const container = document.getElementById('category-selector');
   if (!container) return;
 
-  let html = `<div class="category-check" data-id="">${t('categoryNone')}</div>`;
+  let html = '';
   categories.forEach(cat => {
     html += `<div class="category-check" data-id="${cat.id}" style="border-color: ${cat.color}; color: ${cat.color};">${cat.name}</div>`;
   });
@@ -500,12 +621,22 @@ function editCard(id: string): void {
   const modal = document.createElement('div');
   modal.className = 'modal';
   modal.innerHTML = `
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <h3>${t('modalEditTitle')}</h3>
-      <textarea id="edit-card-content">${escapeHtml(card.content)}</textarea>
-      <div id="edit-category-selector"></div>
-      <button id="update-card-btn">${t('btnUpdate')}</button>
+    <div class="modal-content edit-modal">
+      <div class="modal-header">
+        <h3>${t('modalEditTitle')}</h3>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <textarea id="edit-card-content">${escapeHtml(card.content)}</textarea>
+        <div class="modal-section">
+          <label class="section-label">${t('category')}</label>
+          <div id="edit-category-selector" class="category-selector-container"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancel-edit-btn" class="btn-secondary">${t('btnCancel')}</button>
+        <button id="update-card-btn" class="btn-primary">${t('btnUpdate')}</button>
+      </div>
     </div>
   `;
   document.body.appendChild(modal);
@@ -514,25 +645,35 @@ function editCard(id: string): void {
 
   const selector = document.createElement('div');
   selector.id = 'edit-category-selector';
-  let html = `<div class="category-check ${card.labels.length === 0 ? 'selected' : ''}" data-id="">${t('categoryNone')}</div>`;
+  selector.className = 'category-selector-container';
+  let html = `<div class="category-tag ${card.labels.length === 0 ? 'selected' : ''}" data-id="">${t('categoryNone')}</div>`;
   categories.forEach(cat => {
     const isSelected = card.labels.includes(cat.id);
-    html += `<div class="category-check ${isSelected ? 'selected' : ''}" data-id="${cat.id}" style="border-color: ${cat.color}; color: ${cat.color};">${cat.name}</div>`;
+    html += `<div class="category-tag ${isSelected ? 'selected' : ''}" data-id="${cat.id}" style="border-color: ${cat.color}; color: ${cat.color}; ${isSelected ? 'background-color: ' + cat.color + '20;' : ''}">${cat.name}</div>`;
   });
   selector.innerHTML = html;
-  document.querySelector('.modal-content')?.appendChild(selector);
+  
+  const modalBody = modal.querySelector('.modal-body');
+  if (modalBody) {
+    const categorySection = modalBody.querySelector('.modal-section');
+    if (categorySection) {
+      categorySection.appendChild(selector);
+    }
+  }
 
-  selector.querySelectorAll('.category-check').forEach(el => {
+  selector.querySelectorAll('.category-tag').forEach(el => {
     el.addEventListener('click', () => {
       el.classList.toggle('selected');
     });
   });
 
+  document.getElementById('cancel-edit-btn')?.addEventListener('click', () => modal.remove());
+
   document.getElementById('update-card-btn')?.addEventListener('click', async () => {
     const content = (document.getElementById('edit-card-content') as HTMLTextAreaElement)?.value;
     if (!content || content.trim().length === 0) return;
 
-    const selectedLabels = Array.from(document.querySelectorAll('#edit-category-selector .category-check.selected'))
+    const selectedLabels = Array.from(document.querySelectorAll('#edit-category-selector .category-tag.selected'))
       .map(el => (el as HTMLElement).dataset.id || '')
       .filter(Boolean);
 
@@ -563,30 +704,114 @@ async function togglePin(id: string): Promise<void> {
 async function exportData(): Promise<void> {
   const response = await sendMessage('exportData');
   const data = response as { cards: Card[]; categories: Category[] };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  
+  // 导出为 CSV 格式
+  const csvLines: string[] = [];
+  
+  // 添加标题行
+  csvLines.push('content,category,pinned');
+  
+  // 添加每个卡片
+  data.cards.forEach(card => {
+    const categoryNames = card.labels
+      .map(labelId => {
+        const cat = data.categories.find(c => c.id === labelId);
+        return cat ? cat.name : '';
+      })
+      .filter(Boolean)
+      .join('|'); // 多个分类用 | 分隔
+    
+    const content = card.content.replace(/"/g, '""'); // 处理双引号
+    const escapedContent = content.includes(',') || content.includes('"') || content.includes('\n') 
+      ? `"${content}"` 
+      : content;
+    
+    const pinned = card.pinned ? 'true' : 'false';
+    
+    csvLines.push(`${escapedContent},${categoryNames},${pinned}`);
+  });
+  
+  const csvContent = csvLines.join('\n');
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `quickpaste-backup-${Date.now()}.json`;
+  a.download = `quickpaste-backup-${Date.now()}.csv`;
   a.click();
   URL.revokeObjectURL(url);
+}
+
+function shareExtension(): void {
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  
+  // 根据浏览器选择对应的商店链接
+  const isEdge = navigator.userAgent.includes('Edg');
+  const chromeUrl = 'https://chrome.google.com/webstore/detail/quickpaste/oanmkfemjjmbphojiinomadaocfpiad';
+  const edgeUrl = 'https://microsoftedge.microsoft.com/addons/detail/quickpaste/';
+  
+  const shareTitle = t('shareTitle');
+  const storeLabel = isEdge ? 'Microsoft Edge Add-ons' : 'Chrome Web Store';
+  const storeUrl = isEdge ? edgeUrl : chromeUrl;
+  
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>${shareTitle}</h3>
+      
+      <div class="share-item">
+        <label>${storeLabel}</label>
+        <input type="text" id="share-url" value="${storeUrl}" readonly>
+        <button id="copy-share-btn" class="copy-btn">${t('btnCopy')}</button>
+      </div>
+      
+      <button id="close-share-btn" class="btn-cancel">${t('btnCancel')}</button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  modal.querySelector('.close-modal')?.addEventListener('click', () => modal.remove());
+  
+  document.getElementById('copy-share-btn')?.addEventListener('click', () => {
+    const url = (document.getElementById('share-url') as HTMLInputElement)?.value;
+    if (url) {
+      navigator.clipboard.writeText(url);
+      showToast(t('alertCopied'));
+    }
+  });
+  
+  document.getElementById('close-share-btn')?.addEventListener('click', () => modal.remove());
 }
 
 async function importData(): Promise<void> {
   const input = document.createElement('input');
   input.type = 'file';
-  input.accept = '.json';
+  input.accept = '.csv,.json';
   input.onchange = async (e) => {
     const file = (e.target as HTMLInputElement).files?.[0];
     if (!file) return;
 
     try {
       const text = await file.text();
-      const data = JSON.parse(text);
-
-      if (!data.cards || !Array.isArray(data.cards)) {
-        alert(t('alertInvalidBackup'));
-        return;
+      const fileName = file.name.toLowerCase();
+      
+      let cards: Card[];
+      let categories: Category[];
+      
+      if (fileName.endsWith('.csv')) {
+        // 解析 CSV 格式
+        const result = parseCSV(text);
+        cards = result.cards;
+        categories = result.categories;
+      } else {
+        // 解析 JSON 格式
+        const data = JSON.parse(text);
+        if (!data.cards || !Array.isArray(data.cards)) {
+          alert(t('alertInvalidBackup'));
+          return;
+        }
+        cards = data.cards;
+        categories = data.categories || [];
       }
 
       const response = await sendMessage('exportData');
@@ -598,13 +823,38 @@ async function importData(): Promise<void> {
       }
 
       if (result.overwrite) {
-        await sendMessage('importData', { cards: data.cards, categories: data.categories });
+        await sendMessage('importData', { cards, categories });
       } else {
-        const mergedCards = [...existing.cards, ...data.cards];
+        // 去重：合并时检查内容是否已存在
+        const existingContents = new Set(existing.cards.map(c => c.content.trim().toLowerCase()));
+        const uniqueCards: Card[] = [];
+        const duplicates: Card[] = [];
+        
+        cards.forEach(card => {
+          const normalized = card.content.trim().toLowerCase();
+          if (!existingContents.has(normalized)) {
+            uniqueCards.push(card);
+            existingContents.add(normalized);
+          } else {
+            duplicates.push(card);
+          }
+        });
+        
+        const mergedCards = [...existing.cards, ...uniqueCards];
         const existingCatIds = new Set(existing.categories.map((c: Category) => c.id));
-        const newCategories = data.categories?.filter((c: Category) => !existingCatIds.has(c.id)) || [];
+        const existingCatNames = new Set(existing.categories.map((c: Category) => c.name));
+        
+        // 合并分类，避免重复名称
+        const newCategories = categories.filter((c: Category) => 
+          !existingCatIds.has(c.id) && !existingCatNames.has(c.name)
+        );
         const mergedCategories = [...existing.categories, ...newCategories];
         await sendMessage('importData', { cards: mergedCards, categories: mergedCategories });
+        
+        // 提示去重信息
+        if (duplicates.length > 0) {
+          showToast(t('importDuplicate').replace('{added}', uniqueCards.length.toString()).replace('{skipped}', duplicates.length.toString()));
+        }
       }
 
       loadCards();
@@ -615,6 +865,86 @@ async function importData(): Promise<void> {
     }
   };
   input.click();
+}
+
+function parseCSV(text: string): { cards: Card[]; categories: Category[] } {
+  const lines = text.split('\n').filter(line => line.trim());
+  
+  if (lines.length < 2) {
+    return { cards: [], categories: [] };
+  }
+  
+  // 获取现有分类
+  const categories: Category[] = [];
+  const categoryMap: Record<string, string> = {}; // name -> id
+  
+  const cards: Card[] = [];
+  
+  // 跳过标题行
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i];
+    
+    // 解析 CSV 行
+    const parts: string[] = [];
+    let current = '';
+    let inQuotes = false;
+    
+    for (let j = 0; j < line.length; j++) {
+      const char = line[j];
+      if (char === '"') {
+        if (inQuotes && line[j + 1] === '"') {
+          current += '"';
+          j++;
+        } else {
+          inQuotes = !inQuotes;
+        }
+      } else if (char === ',' && !inQuotes) {
+        parts.push(current);
+        current = '';
+      } else {
+        current += char;
+      }
+    }
+    parts.push(current);
+    
+    if (parts.length < 1) continue;
+    
+    const content = parts[0].trim();
+    if (!content) continue;
+    
+    const categoryStr = parts.length > 1 ? parts[1].trim() : '';
+    const pinned = parts.length > 2 && parts[2].trim() === 'true';
+    
+    // 处理分类
+    const labelIds: string[] = [];
+    if (categoryStr) {
+      const categoryNames = categoryStr.split('|').map(n => n.trim()).filter(Boolean);
+      
+      categoryNames.forEach(name => {
+        if (!categoryMap[name]) {
+          const newCat: Category = {
+            id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+            name,
+            color: getColorByName(name)
+          };
+          categories.push(newCat);
+          categoryMap[name] = newCat.id;
+        }
+        labelIds.push(categoryMap[name]);
+      });
+    }
+    
+    cards.push({
+      id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+      content,
+      labels: labelIds,
+      pinned,
+      order: cards.length,
+      createdAt: Date.now()
+    });
+  }
+  
+  return { cards, categories };
 }
 
 function showImportConfirmDialog(): Promise<{ canceled: boolean; overwrite: boolean }> {
@@ -840,19 +1170,84 @@ async function checkFirstUse(): Promise<void> {
 
 function updateBatchDeleteButton(): void {
   const btn = document.getElementById('batch-delete-btn') as HTMLButtonElement;
+  const changeCatBtn = document.getElementById('batch-change-category-btn') as HTMLButtonElement;
   const countEl = document.getElementById('selected-count');
-  if (btn && countEl) {
+  if (btn && changeCatBtn && countEl) {
     const count = selectedCardIds.size;
     countEl.textContent = count.toString();
     btn.disabled = count === 0;
+    changeCatBtn.disabled = count === 0;
   }
+}
+
+function showBatchChangeCategoryModal(): void {
+  if (selectedCardIds.size === 0) return;
+  
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3>${t('btnBatchChangeCategory')}</h3>
+      <p class="batch-hint">${t('selectedCount').replace('{count}', selectedCardIds.size.toString())}</p>
+      <div id="batch-category-selector"></div>
+      <div class="btn-group">
+        <button id="cancel-batch-cat-btn" class="btn-cancel">${t('btnCancel')}</button>
+        <button id="confirm-batch-cat-btn" class="btn-save">${t('btnSave')}</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  modal.querySelector('.close-modal')?.addEventListener('click', () => modal.remove());
+
+  // 渲染分类选择器
+  const container = document.getElementById('batch-category-selector');
+  if (container) {
+    let html = `<div class="category-check" data-id="">${t('categoryNone')}</div>`;
+    categories.forEach(cat => {
+      html += `<div class="category-check" data-id="${cat.id}" style="border-color: ${cat.color}; color: ${cat.color};">${cat.name}</div>`;
+    });
+    container.innerHTML = html;
+
+    container.querySelectorAll('.category-check').forEach(el => {
+      el.addEventListener('click', () => {
+        container.querySelectorAll('.category-check').forEach(e => e.classList.remove('selected'));
+        el.classList.add('selected');
+      });
+    });
+  }
+
+  document.getElementById('cancel-batch-cat-btn')?.addEventListener('click', () => modal.remove());
+
+  document.getElementById('confirm-batch-cat-btn')?.addEventListener('click', async () => {
+    const selectedLabel = (container?.querySelector('.category-check.selected') as HTMLElement)?.dataset.id || '';
+    
+    // 更新所有选中的卡片
+    for (const cardId of selectedCardIds) {
+      const card = cards.find(c => c.id === cardId);
+      if (card) {
+        const updatedCard = {
+          ...card,
+          labels: selectedLabel ? [selectedLabel] : []
+        };
+        await sendMessage('updateCard', { card: updatedCard });
+      }
+    }
+    
+    loadCards();
+    showToast(t('batchChangeCategorySuccess').replace('{count}', selectedCardIds.size.toString()));
+    modal.remove();
+    exitEditMode();
+  });
 }
 
 function updateSelectAllCheckbox(): void {
   const selectAll = document.getElementById('select-all') as HTMLInputElement;
   if (!selectAll) return;
   
-  const currentCards = cards.filter(c => {
+  let currentCards = cards.filter(c => {
     if (activeCategory === 'uncategorized') return c.labels.length === 0;
     if (activeCategory !== 'all') return c.labels.includes(activeCategory);
     return true;
@@ -860,7 +1255,7 @@ function updateSelectAllCheckbox(): void {
 
   if (searchQuery) {
     const query = searchQuery.toLowerCase();
-    currentCards.filter(c => c.content.toLowerCase().includes(query));
+    currentCards = currentCards.filter(c => c.content.toLowerCase().includes(query));
   }
 
   const visibleIds = new Set(currentCards.map(c => c.id));
@@ -949,15 +1344,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderCards();
   });
 
-  document.getElementById('add-btn-top')?.addEventListener('click', showAddCardModal);
-  document.getElementById('add-btn')?.addEventListener('click', showAddCardModal);
-  document.getElementById('add-card-btn')?.addEventListener('click', showAddCardModal);
+  document.getElementById('add-btn')?.addEventListener('click', () => showAddCardModal(false));
+  document.getElementById('add-card-btn')?.addEventListener('click', () => showAddCardModal(false));
   document.getElementById('export-btn')?.addEventListener('click', exportData);
+  document.getElementById('share-btn')?.addEventListener('click', shareExtension);
   document.getElementById('import-btn')?.addEventListener('click', importData);
   document.getElementById('lang-btn')?.addEventListener('click', showLanguageMenu);
   document.getElementById('help-btn')?.addEventListener('click', openHelp);
   document.getElementById('select-all')?.addEventListener('change', handleSelectAll);
   document.getElementById('batch-delete-btn')?.addEventListener('click', handleBatchDelete);
+  document.getElementById('batch-change-category-btn')?.addEventListener('click', showBatchChangeCategoryModal);
   document.getElementById('edit-mode-btn')?.addEventListener('click', toggleEditMode);
   document.getElementById('cancel-edit-btn')?.addEventListener('click', exitEditMode);
 
